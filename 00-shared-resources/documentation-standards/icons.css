@@ -1,0 +1,19 @@
+:root{
+  --icon-size-sm:20px;
+  --icon-size-md:28px;
+  --icon-size-lg:56px;
+}
+
+.icon{display:inline-block;width:var(--icon-size-md);height:var(--icon-size-md);background-color:currentColor;-webkit-mask:no-repeat center/contain;mask:no-repeat center/contain}
+.icon--spark{-webkit-mask-image:url('/assets/icons/spark.svg');mask-image:url('/assets/icons/spark.svg')}
+.icon--eyes{-webkit-mask-image:url('/assets/icons/eyes.svg');mask-image:url('/assets/icons/eyes.svg')}
+.icon--clover{-webkit-mask-image:url('/assets/icons/clover.svg');mask-image:url('/assets/icons/clover.svg')}
+.icon--burst{-webkit-mask-image:url('/assets/icons/burst.svg');mask-image:url('/assets/icons/burst.svg')}
+
+[data-variant="saas"] .icon{color:#47FFBF}
+[data-variant="talent"] .icon{color:#000}
+[data-variant="nights"] .icon{color:#fff}
+[data-variant="cafe"] .icon{color:#000}
+[data-variant="dinners"] .icon{color:#000}
+
+

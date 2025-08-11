@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml" style="font-size:16px;">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Flash Coffee Meetup - Confirmación</title>
+  <style>
+    body { 
+      margin: 0; 
+      padding: 0; 
+      background: linear-gradient(135deg, #1a1a1a 0%, #2c1810 50%, #1a1a1a 100%);
+      font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; 
+      color: #ffffff;
+      line-height: 1.4;
+    }
+    
+    .container { 
+      max-width: 375px; 
+      margin: 0 auto; 
+      background: linear-gradient(135deg, #1a1a1a 0%, #2c1810 50%, #1a1a1a 100%);
+      padding: 0;
+      min-height: 667px; /* Instagram story proportions */
+      position: relative;
+      overflow: hidden;
+    }
+    
+    /* Subtle coffee bean pattern */
+    .container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: 
+        radial-gradient(circle at 20% 20%, rgba(139, 69, 19, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(160, 82, 45, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 60%, rgba(139, 69, 19, 0.05) 0%, transparent 50%);
+      z-index: 1;
+    }
+    
+    .content {
+      position: relative;
+      z-index: 2;
+      padding: 40px 24px;
+      text-align: center;
+      height: calc(667px - 80px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    
+    .header {
+      margin-bottom: 0;
+    }
+    
+    .status-badge {
+      background: linear-gradient(135deg, #17d8ca 0%, #12ceb6 100%);
+      color: #000;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      padding: 8px 16px;
+      border-radius: 20px;
+      display: inline-block;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+    }
+    
+    .main-title {
+      color: #17d8ca;
+      font-size: 32px;
+      font-weight: 800;
+      margin: 0;
+      line-height: 0.9;
+      letter-spacing: -1px;
+      margin-bottom: 8px;
+    }
+    
+    .greeting {
+      color: #ffffff;
+      font-size: 18px;
+      font-weight: 500;
+      margin: 0 0 32px 0;
+      opacity: 0.9;
+    }
+    
+    /* Main content section */
+    .main-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    
+    .secret-reveal {
+      background: rgba(23, 216, 202, 0.1);
+      border: 1px solid rgba(23, 216, 202, 0.3);
+      border-radius: 16px;
+      padding: 24px 20px;
+      margin: 20px 0;
+      position: relative;
+    }
+    
+    .secret-reveal::before {
+      content: '📍';
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #1a1a1a;
+      padding: 0 8px;
+      font-size: 20px;
+    }
+    
+    .location-name {
+      color: #17d8ca;
+      font-size: 16px;
+      font-weight: 700;
+      margin: 0 0 4px 0;
+      letter-spacing: 0.5px;
+    }
+    
+    .location-address {
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 500;
+      margin: 0;
+      opacity: 0.9;
+    }
+    
+    .event-details {
+      margin: 24px 0;
+    }
+    
+    .date-time {
+      color: #ffffff;
+      font-size: 20px;
+      font-weight: 600;
+      margin: 0 0 12px 0;
+    }
+    
+    .vibe-description {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 14px;
+      line-height: 1.5;
+      margin: 0;
+      font-style: italic;
+    }
+    
+    /* Footer section */
+    .footer-section {
+      margin-top: auto;
+    }
+    
+    .call-to-action {
+      background: rgba(23, 216, 202, 0.05);
+      border-radius: 12px;
+      padding: 16px;
+      margin: 20px 0;
+      border: 1px solid rgba(23, 216, 202, 0.2);
+    }
+    
+    .cta-text {
+      color: #17d8ca;
+      font-size: 13px;
+      font-weight: 600;
+      margin: 0;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    .share-note {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 11px;
+      margin: 16px 0 0 0;
+      letter-spacing: 0.5px;
+    }
+    
+    /* Coffee cup decoration */
+    .coffee-decoration {
+      position: absolute;
+      top: 16px;
+      right: 20px;
+      font-size: 24px;
+      opacity: 0.3;
+      z-index: 3;
+    }
+    
+    /* Subtle animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .header {
+      animation: fadeInUp 0.6s ease-out;
+    }
+    
+    .main-content {
+      animation: fadeInUp 0.8s ease-out 0.2s both;
+    }
+    
+    .footer-section {
+      animation: fadeInUp 1s ease-out 0.4s both;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 375px) {
+      .container {
+        max-width: 100%;
+      }
+      
+      .content {
+        padding: 32px 20px;
+      }
+      
+      .main-title {
+        font-size: 28px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="coffee-decoration">☕</div>
+    
+    <div class="content">
+      <div class="header">
+        <div class="status-badge">CONFIRMADO</div>
+        <h1 class="main-title">
+          FLASH<br>
+          COFFEE<br>
+          MEETUP
+        </h1>
+        <p class="greeting">Hola {{var:firstname}} 👋</p>
+      </div>
+      
+      <div class="main-content">
+        <div class="secret-reveal">
+          <h2 class="location-name">Milimétrica Café</h2>
+          <p class="location-address">Calle Alcanfores 215, Miraflores</p>
+        </div>
+        
+        <div class="event-details">
+          <p class="date-time">Viernes 8 Agosto • 6:30 PM</p>
+          <p class="vibe-description">
+            Orchestral classic hip-hop, luces cálidas,<br>
+            el mejor cold brew de Lima.<br>
+            <strong>Vibra perfecta para conversar.</strong>
+          </p>
+        </div>
+      </div>
+      
+      <div class="footer-section">
+        <div class="call-to-action">
+          <p class="cta-text">Trae tu Builder Energy ⚡</p>
+        </div>
+        
+        <p class="share-note">
+          PS: Esto se va a poner bueno.<br>
+          Worth sharing? 📱
+        </p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

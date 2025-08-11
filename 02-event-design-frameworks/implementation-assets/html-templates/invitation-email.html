@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invitación Exclusiva: Coffee Party 08/09 | Prisma</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        /* Reset */
+        table, td, div, h1, h2, h3, p, a {
+            margin: 0;
+            padding: 0;
+        }
+        
+        table {
+            border-spacing: 0;
+            border-collapse: collapse;
+        }
+        
+        img {
+            border: 0;
+            outline: none;
+            text-decoration: none;
+            -ms-interpolation-mode: bicubic;
+        }
+        
+        /* Email-safe styles */
+        .email-container {
+            max-width: 600px;
+            margin: 0 auto;
+            font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+            background-color: #F8F6F0;
+        }
+        
+        .email-body {
+            background-color: #F8F6F0;
+            padding: 40px 20px;
+        }
+        
+        .content-block {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 24px;
+            border: 1px solid rgba(75, 255, 191, 0.2);
+        }
+        
+        .header-block {
+            text-align: center;
+            background: linear-gradient(135deg, rgba(75, 255, 191, 0.1) 0%, transparent 50%);
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1B2951;
+            margin-bottom: 16px;
+            letter-spacing: 0.05em;
+        }
+        
+        .logo-accent {
+            color: #47FFBF;
+        }
+        
+        .badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #47FFBF, #3BFFAA);
+            color: #1B2951;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 24px;
+        }
+        
+        .invitation-title {
+            font-size: 32px;
+            font-weight: 700;
+            color: #1B2951;
+            margin-bottom: 12px;
+            letter-spacing: 0.03em;
+            line-height: 1.2;
+        }
+        
+        .invitation-subtitle {
+            font-size: 18px;
+            font-weight: 400;
+            color: #2C2C2C;
+            margin-bottom: 8px;
+            letter-spacing: 0.02em;
+        }
+        
+        .invitation-tagline {
+            font-size: 16px;
+            font-weight: 500;
+            color: #47FFBF;
+            margin-bottom: 24px;
+            letter-spacing: 0.02em;
+        }
+        
+        .event-details-grid {
+            display: table;
+            width: 100%;
+            margin-bottom: 24px;
+        }
+        
+        .detail-row {
+            display: table-row;
+        }
+        
+        .detail-cell {
+            display: table-cell;
+            padding: 12px 16px;
+            vertical-align: middle;
+            border-bottom: 1px solid rgba(27, 41, 81, 0.1);
+        }
+        
+        .detail-label {
+            font-size: 14px;
+            font-weight: 600;
+            color: #1B2951;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            width: 30%;
+        }
+        
+        .detail-value {
+            font-size: 16px;
+            font-weight: 500;
+            color: #2C2C2C;
+            letter-spacing: 0.01em;
+        }
+        
+        .section-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #1B2951;
+            margin-bottom: 16px;
+            letter-spacing: 0.02em;
+        }
+        
+        .body-text {
+            font-size: 16px;
+            color: #2C2C2C;
+            line-height: 1.7;
+            margin-bottom: 16px;
+            letter-spacing: 0.01em;
+        }
+        
+        .highlight-text {
+            background: rgba(75, 255, 191, 0.2);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+        
+        .cta-container {
+            text-align: center;
+            margin: 32px 0;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #1B2951 0%, #2C2C2C 100%);
+            color: white !important;
+            padding: 16px 32px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            transition: all 0.3s ease;
+        }
+        
+        .speakers-grid {
+            display: table;
+            width: 100%;
+            margin: 24px 0;
+        }
+        
+        .speaker-row {
+            display: table-row;
+        }
+        
+        .speaker-cell {
+            display: table-cell;
+            padding: 16px;
+            vertical-align: top;
+            width: 50%;
+        }
+        
+        .speaker-name {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1B2951;
+            margin-bottom: 4px;
+        }
+        
+        .speaker-title {
+            font-size: 14px;
+            color: #2C2C2C;
+            margin-bottom: 8px;
+        }
+        
+        .speaker-topic {
+            font-size: 14px;
+            color: #47FFBF;
+            font-weight: 500;
+        }
+        
+        .exclusive-box {
+            background: rgba(58, 93, 58, 0.1);
+            border-left: 4px solid #3A5D3A;
+            padding: 20px;
+            margin: 24px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .exclusive-text {
+            font-size: 14px;
+            color: #3A5D3A;
+            font-weight: 500;
+            letter-spacing: 0.01em;
+            line-height: 1.6;
+        }
+        
+        .footer-block {
+            text-align: center;
+            padding: 24px;
+            background-color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .footer-text {
+            font-size: 12px;
+            color: #2C2C2C;
+            line-height: 1.5;
+            margin-bottom: 8px;
+        }
+        
+        .unsubscribe {
+            font-size: 11px;
+            color: #1B2951;
+            text-decoration: none;
+        }
+        
+        /* Mobile responsive */
+        @media screen and (max-width: 600px) {
+            .email-body {
+                padding: 20px 10px;
+            }
+            
+            .content-block {
+                padding: 24px 20px;
+            }
+            
+            .invitation-title {
+                font-size: 28px;
+            }
+            
+            .speakers-grid,
+            .speaker-row,
+            .speaker-cell {
+                display: block;
+            }
+            
+            .speaker-cell {
+                width: 100%;
+                padding: 12px 0;
+                border-bottom: 1px solid rgba(27, 41, 81, 0.1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <div class="email-body">
+            <!-- Header -->
+            <div class="content-block header-block">
+                <div class="logo">
+                    PRISMA<span class="logo-accent">.</span>
+                </div>
+                
+                <div class="badge">
+                    Invitación Exclusiva
+                </div>
+                
+                <h1 class="invitation-title">Coffee Party 08/09</h1>
+                <h2 class="invitation-subtitle">AI-Native Product Management</h2>
+                <p class="invitation-tagline">From Manual to Magical</p>
+            </div>
+            
+            <!-- Personal Greeting -->
+            <div class="content-block">
+                <p class="body-text">Hola [NOMBRE],</p>
+                
+                <p class="body-text">
+                    Has sido seleccionado para formar parte de un momento histórico en el product management de Lima. El <span class="highlight-text">viernes 8 de septiembre</span>, 20 product managers liderando la transformación digital en Perú se reunirán para presenciar el futuro de nuestro trabajo.
+                </p>
+                
+                <p class="body-text">
+                    No es otro evento de networking. Es tu oportunidad de ser testigo de <span class="highlight-text">la creación de PRDs completos en 15 minutos</span> y formar parte del inicio de la era AI-native en product management.
+                </p>
+            </div>
+            
+            <!-- Event Details -->
+            <div class="content-block">
+                <h3 class="section-title">Detalles del Evento</h3>
+                
+                <div class="event-details-grid">
+                    <div class="detail-row">
+                        <div class="detail-cell detail-label">Fecha</div>
+                        <div class="detail-cell detail-value">Viernes 8 de Septiembre, 2024</div>
+                    </div>
+                    <div class="detail-row">
+                        <div class="detail-cell detail-label">Hora</div>
+                        <div class="detail-cell detail-value">6:00 - 8:30 PM (After-office perfecto)</div>
+                    </div>
+                    <div class="detail-row">
+                        <div class="detail-cell detail-label">Lugar</div>
+                        <div class="detail-cell detail-value">Specialty Coffee Shop, Lima<br><small>Dirección exacta al confirmar</small></div>
+                    </div>
+                    <div class="detail-row">
+                        <div class="detail-cell detail-label">Cupos</div>
+                        <div class="detail-cell detail-value">Solo 20 personas (Tú eres una de ellas)</div>
+                    </div>
+                    <div class="detail-row">
+                        <div class="detail-cell detail-label">Costo</div>
+                        <div class="detail-cell detail-value">Completamente gratuito</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- What You'll Experience -->
+            <div class="content-block">
+                <h3 class="section-title">Lo Que Vivirás</h3>
+                
+                <p class="body-text">
+                    <strong>6:30 PM - Peer Reality Check:</strong> Un product manager local compartirá cómo AI transformó sus últimos 3 launches, aumentando la velocidad de su equipo en un 60%. Prepárate para ese momento "oh shit, estoy quedándome atrás".
+                </p>
+                
+                <p class="body-text">
+                    <strong>6:45 PM - The 15-Minute Revolution:</strong> Demostración en vivo de cómo una idea se convierte en un PRD completo y estructurado en tiempo real. Verás el futuro del product management suceder frente a tus ojos.
+                </p>
+                
+                <p class="body-text">
+                    <strong>7:00 PM - Hands-On Experience:</strong> Prueba tú mismo la herramienta con tus propias ideas de productos. Conversaciones auténticas con los PMs más sofisticados de Lima mientras tomamos el mejor café de la ciudad.
+                </p>
+            </div>
+            
+            <!-- Speakers Preview -->
+            <div class="content-block">
+                <h3 class="section-title">Quién Compartirá</h3>
+                
+                <div class="speakers-grid">
+                    <div class="speaker-row">
+                        <div class="speaker-cell">
+                            <div class="speaker-name">PM Champion Local</div>
+                            <div class="speaker-title">Senior PM en [Empresa Lima]</div>
+                            <div class="speaker-topic">"6 meses de transformación AI"</div>
+                        </div>
+                        <div class="speaker-cell">
+                            <div class="speaker-name">Founder Prisma</div>
+                            <div class="speaker-title">AI Product Intelligence</div>
+                            <div class="speaker-topic">"Live PRD Creation Demo"</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <p class="body-text">
+                    <small>* Champion speaker será anunciado próximamente - un PM respetado en Lima con historia real de transformación AI.</small>
+                </p>
+            </div>
+            
+            <!-- CTA -->
+            <div class="cta-container">
+                <a href="#" class="cta-button">
+                    Confirmar Mi Asistencia
+                </a>
+            </div>
+            
+            <!-- Exclusive Note -->
+            <div class="exclusive-box">
+                <p class="exclusive-text">
+                    <strong>¿Por qué fuiste seleccionado?</strong><br>
+                    Revisamos cientos de perfiles de product managers en Lima. Tu experiencia, empresa y posición te colocan entre los líderes que están moldeando el futuro del product management en Perú. Este grupo de 20 personas se convertirá en la comunidad fundadora de AI-native PM en nuestra región.
+                </p>
+            </div>
+            
+            <!-- What to Expect -->
+            <div class="content-block">
+                <h3 class="section-title">Al Final de la Noche</h3>
+                
+                <p class="body-text">
+                    Saldrás con acceso early access a herramientas que transformarán tu workflow, conexiones profesionales genuinas con los mejores PMs de Lima, y la satisfacción de haber sido parte del inicio de algo importante en nuestra industria.
+                </p>
+                
+                <p class="body-text">
+                    Más importante aún: tendrás claridad sobre cómo la inteligencia artificial puede acelerar tu trabajo de product management, y las herramientas para implementarlo inmediatamente.
+                </p>
+            </div>
+            
+            <!-- Final CTA -->
+            <div class="content-block">
+                <h3 class="section-title">Tu Próximo Paso</h3>
+                
+                <p class="body-text">
+                    Confirma tu asistencia antes del <strong>miércoles 6 de septiembre</strong>. Los cupos son limitados y queremos garantizar el mejor networking posible.
+                </p>
+                
+                <div class="cta-container">
+                    <a href="#" class="cta-button">
+                        Sí, Estaré Ahí
+                    </a>
+                </div>
+                
+                <p class="body-text">
+                    <small>Si no puedes asistir, por favor avísanos para ofrecer tu cupo a otro PM destacado de Lima.</small>
+                </p>
+            </div>
+            
+            <!-- Footer -->
+            <div class="footer-block">
+                <p class="footer-text">
+                    <strong>PRISMA</strong> - AI-Powered Product Intelligence<br>
+                    Building the future of product management, starting in Lima
+                </p>
+                
+                <p class="footer-text">
+                    ¿Preguntas? Responde a este email<br>
+                    <a href="#" class="unsubscribe">Unsubscribe</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

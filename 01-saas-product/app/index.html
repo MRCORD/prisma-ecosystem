@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Prisma PRD Builder - Crea documentos de requerimientos de producto profesionales en minutos con IA. Ahorra 50-70% del tiempo de documentación.">
+    <meta name="keywords" content="PRD, Product Requirements Document, Product Management, AI, SaaS, Prisma">
+    <meta property="og:title" content="Prisma PRD Builder - Documentación de Producto con IA">
+    <meta property="og:description" content="Transforma ideas en PRDs profesionales en minutos. Ahorra hasta 70% del tiempo con nuestros 10 agentes de IA especializados.">
+    <meta property="og:image" content="/assets/og-image.png">
+    <meta property="og:url" content="https://prisma.io/prd-builder">
+    <title>Prisma PRD Builder - Crea PRDs Profesionales con IA en Minutos</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/favicon.png">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav" role="navigation" aria-label="Main navigation">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="/" class="logo" aria-label="Prisma home">
+                    <svg width="120" height="32" viewBox="0 0 120 32" fill="none">
+                        <text x="0" y="24" font-family="Inter" font-size="24" font-weight="700" fill="#FFFFFF">PRISMA</text>
+                    </svg>
+                </a>
+                <div class="nav-menu">
+                    <a href="#features" class="nav-link">Características</a>
+                    <a href="#how-it-works" class="nav-link">Cómo Funciona</a>
+                    <a href="#pricing" class="nav-link">Precios</a>
+                    <a href="#" class="nav-link nav-cta">Iniciar Sesión</a>
+                </div>
+                <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" role="banner">
+        <div class="hero-bg">
+            <div class="hero-gradient"></div>
+            <div class="hero-particles"></div>
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="badge-icon">🚀</span>
+                    <span>Nuevo: 10 Agentes de IA Especializados</span>
+                </div>
+                <h1 class="hero-title">
+                    Crea PRDs Profesionales en <span class="gradient-text">Minutos, No Horas</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Transforma tus ideas de producto en documentos de requerimientos completos con IA. 
+                    Ahorra hasta 70% del tiempo y asegura que nada importante se quede fuera.
+                </p>
+                <div class="hero-cta">
+                    <a href="#" class="btn btn-primary btn-large" data-action="start-free">
+                        Comenzar Gratis
+                        <svg class="btn-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M7 10H13M13 10L10 7M13 10L10 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="btn btn-secondary btn-large" data-action="book-demo">
+                        <svg class="btn-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M10 19C14.9706 19 19 14.9706 19 10C19 5.02944 14.9706 1 10 1C5.02944 1 1 5.02944 1 10C1 14.9706 5.02944 19 10 19Z" stroke="currentColor" stroke-width="2"/>
+                            <path d="M8 7L13 10L8 13V7Z" fill="currentColor"/>
+                        </svg>
+                        Ver Demo (2 min)
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-value">50-70%</span>
+                        <span class="stat-label">Reducción de Tiempo</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">10K+</span>
+                        <span class="stat-label">PRDs Creados</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">500+</span>
+                        <span class="stat-label">Equipos Activos</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof Bar -->
+    <section class="social-proof-bar">
+        <div class="container">
+            <p class="social-proof-text">Usado por equipos de producto en:</p>
+            <div class="logo-slider">
+                <div class="logo-track">
+                    <img src="/assets/logos/interbank.svg" alt="Interbank" class="client-logo">
+                    <img src="/assets/logos/rappi.svg" alt="Rappi" class="client-logo">
+                    <img src="/assets/logos/mercadolibre.svg" alt="MercadoLibre" class="client-logo">
+                    <img src="/assets/logos/nubank.svg" alt="Nubank" class="client-logo">
+                    <img src="/assets/logos/globant.svg" alt="Globant" class="client-logo">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="problem-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">¿Te Suena Familiar?</h2>
+                <p class="section-subtitle">Los Product Managers pierden horas valiosas en documentación</p>
+            </div>
+            <div class="problem-grid">
+                <div class="problem-card">
+                    <div class="problem-icon">⏰</div>
+                    <h3>4-6 Horas por PRD</h3>
+                    <p>Tiempo que podrías usar validando con usuarios</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">😵</div>
+                    <h3>Formatos Inconsistentes</h3>
+                    <p>Cada PM tiene su propio template</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">🤔</div>
+                    <h3>Elementos Olvidados</h3>
+                    <p>¿Incluiste todos los edge cases?</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="solution-section" id="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Cómo Funciona</span>
+                <h2 class="section-title">10 Agentes de IA Trabajando para Ti</h2>
+                <p class="section-subtitle">
+                    Cada agente es un experto especializado que analiza tu idea desde diferentes perspectivas
+                </p>
+            </div>
+            <div class="agents-showcase">
+                <div class="agent-card active" data-agent="1">
+                    <div class="agent-number">01</div>
+                    <h3>Estructurador de Ideas</h3>
+                    <p>Convierte tu idea en una estructura clara y procesable</p>
+                </div>
+                <div class="agent-card" data-agent="2">
+                    <div class="agent-number">02</div>
+                    <h3>Adaptador de Contexto</h3>
+                    <p>Agrega contexto específico de tu industria</p>
+                </div>
+                <div class="agent-card" data-agent="3">
+                    <div class="agent-number">03</div>
+                    <h3>Sintetizador de Stakeholders</h3>
+                    <p>Identifica expectativas y riesgos clave</p>
+                </div>
+                <div class="agent-card" data-agent="4">
+                    <div class="agent-number">04</div>
+                    <h3>Analista Competitivo</h3>
+                    <p>Posicionamiento y diferenciadores del mercado</p>
+                </div>
+                <div class="agent-card" data-agent="5">
+                    <div class="agent-number">05</div>
+                    <h3>Escáner de Compliance</h3>
+                    <p>Requisitos regulatorios y de seguridad</p>
+                </div>
+                <div class="agent-card more-agents">
+                    <div class="agent-number">+5</div>
+                    <h3>Y 5 Agentes Más</h3>
+                    <p>UX, Técnico, Historias de Usuario...</p>
+                </div>
+            </div>
+            <div class="process-visual">
+                <div class="process-step">
+                    <div class="step-icon">💡</div>
+                    <h4>Tu Idea</h4>
+                    <p>Describe tu producto en lenguaje natural</p>
+                </div>
+                <div class="process-arrow">→</div>
+                <div class="process-step">
+                    <div class="step-icon">🤖</div>
+                    <h4>10 Agentes IA</h4>
+                    <p>Análisis desde múltiples perspectivas</p>
+                </div>
+                <div class="process-arrow">→</div>
+                <div class="process-step">
+                    <div class="step-icon">📄</div>
+                    <h4>PRD Completo</h4>
+                    <p>Documento profesional listo para compartir</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section" id="features">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Características</span>
+                <h2 class="section-title">Todo lo que Necesitas para PRDs de Clase Mundial</h2>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                            <circle cx="24" cy="24" r="24" fill="url(#gradient1)" opacity="0.1"/>
+                            <path d="M24 16V32M16 24H32" stroke="url(#gradient1)" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3>Templates Probados</h3>
+                    <p>Estructuras que han generado productos exitosos en empresas líderes</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                            <circle cx="24" cy="24" r="24" fill="url(#gradient2)" opacity="0.1"/>
+                            <path d="M20 20L28 28M28 20L20 28" stroke="url(#gradient2)" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3>Validación Inteligente</h3>
+                    <p>IA identifica gaps y sugiere mejoras antes de compartir</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                            <circle cx="24" cy="24" r="24" fill="url(#gradient3)" opacity="0.1"/>
+                            <circle cx="24" cy="24" r="8" stroke="url(#gradient3)" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3>Colaboración en Tiempo Real</h3>
+                    <p>Trabaja con tu equipo, comenta y versiona tus PRDs</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                            <circle cx="24" cy="24" r="24" fill="url(#gradient1)" opacity="0.1"/>
+                            <rect x="16" y="16" width="16" height="16" stroke="url(#gradient1)" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3>Exportación Flexible</h3>
+                    <p>Markdown, PDF, o integración directa con Jira/Linear</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                            <circle cx="24" cy="24" r="24" fill="url(#gradient2)" opacity="0.1"/>
+                            <path d="M16 24L20 28L28 20" stroke="url(#gradient2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3>Métricas de Éxito</h3>
+                    <p>Define KPIs y vincula features con resultados de negocio</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                            <circle cx="24" cy="24" r="24" fill="url(#gradient3)" opacity="0.1"/>
+                            <path d="M24 16L16 24L24 32L32 24L24 16Z" stroke="url(#gradient3)" stroke-width="2" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3>Análisis de Riesgos</h3>
+                    <p>Identifica obstáculos potenciales antes de construir</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Testimonios</span>
+                <h2 class="section-title">Lo que Dicen los Product Managers</h2>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="stars">★★★★★</div>
+                        <p>"Reduje el tiempo de crear PRDs de 6 horas a 45 minutos. La calidad es incluso mejor porque no olvido ningún detalle importante."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="/assets/avatars/maria.jpg" alt="María González" class="author-avatar">
+                        <div>
+                            <h4>María González</h4>
+                            <p>Senior PM, Rappi</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="stars">★★★★★</div>
+                        <p>"Los 10 agentes de IA son increíbles. Es como tener un equipo completo revisando cada aspecto de mi producto antes de presentarlo."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="/assets/avatars/carlos.jpg" alt="Carlos Mendez" class="author-avatar">
+                        <div>
+                            <h4>Carlos Mendez</h4>
+                            <p>Head of Product, Interbank</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="stars">★★★★★</div>
+                        <p>"La consistencia entre PRDs de diferentes PMs mejoró dramáticamente. Ahora todos hablamos el mismo idioma."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="/assets/avatars/ana.jpg" alt="Ana Silva" class="author-avatar">
+                        <div>
+                            <h4>Ana Silva</h4>
+                            <p>VP Product, MercadoLibre</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ROI Calculator -->
+    <section class="roi-section">
+        <div class="container">
+            <div class="roi-card">
+                <div class="roi-content">
+                    <h2>Calcula tu ROI</h2>
+                    <p>¿Cuánto tiempo y dinero podrías ahorrar?</p>
+                    <div class="roi-calculator">
+                        <div class="calc-input">
+                            <label>PRDs por mes:</label>
+                            <input type="number" id="prds-per-month" value="8" min="1" max="100">
+                        </div>
+                        <div class="calc-input">
+                            <label>Horas por PRD:</label>
+                            <input type="number" id="hours-per-prd" value="5" min="1" max="20">
+                        </div>
+                        <div class="calc-input">
+                            <label>Costo por hora (USD):</label>
+                            <input type="number" id="cost-per-hour" value="75" min="10" max="500">
+                        </div>
+                    </div>
+                    <div class="roi-results">
+                        <div class="roi-metric">
+                            <span class="metric-label">Horas Ahorradas/Mes</span>
+                            <span class="metric-value" id="hours-saved">28</span>
+                        </div>
+                        <div class="roi-metric">
+                            <span class="metric-label">Ahorro Mensual</span>
+                            <span class="metric-value" id="money-saved">$2,100</span>
+                        </div>
+                        <div class="roi-metric">
+                            <span class="metric-label">ROI Anual</span>
+                            <span class="metric-value" id="annual-roi">$25,200</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="roi-visual">
+                    <canvas id="roi-chart"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing-section" id="pricing">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Precios</span>
+                <h2 class="section-title">Elige el Plan Perfecto para tu Equipo</h2>
+                <p class="section-subtitle">Comienza gratis, escala cuando lo necesites</p>
+            </div>
+            <div class="pricing-toggle">
+                <span class="toggle-label">Mensual</span>
+                <label class="toggle">
+                    <input type="checkbox" id="pricing-toggle">
+                    <span class="toggle-slider"></span>
+                </label>
+                <span class="toggle-label">Anual <span class="discount-badge">-20%</span></span>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Gratis</h3>
+                        <p>Para PMs individuales comenzando</p>
+                    </div>
+                    <div class="pricing-price">
+                        <span class="currency">$</span>
+                        <span class="amount">0</span>
+                        <span class="period">/mes</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>
+                            <svg class="check-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M5 10L8 13L15 6" stroke="#47FFBF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            3 PRDs por mes
+                        </li>
+                        <li>
+                            <svg class="check-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M5 10L8 13L15 6" stroke="#47FFBF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            Templates básicos
+                        </li>
+                        <li>
+                            <svg class="check-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M5 10L8 13L15 6" stroke="#47FFBF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            5 Agentes de IA
+                        </li>
+                        <li>
+                            <svg class="check-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M5 10L8 13L15 6" stroke="#47FFBF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            Exportar a Markdown
+                        </li>
+                    </ul>
+                    <a href="#" class="btn btn-secondary btn-block" data-action="start-free">Comenzar Gratis</a>
+                </div>
+                
+                <div class="pricing-card featured">
+                    <div class="pricing-badge">Más Popular</div>
+                    <div class="pricing-header">
+                        <h3>Pro</h3>
+                        <p>Para PMs que quieren máxima productividad</p>
+                    </div>
+                    <div class="pricing-price">
+                        <span class="currency">$</span>
+                        <span class="amount" data-monthly="19" data-annual="15">19</span>
+                        <span class="period">/mes</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>
+                            <svg class="check-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M5 10L8 13L15 6" stroke="#47FFBF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            PRDs ilimitados
+                        </li>
+                        <li>
+                            <svg class="check-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M5 10L8 13L15 6" stroke="#47FFBF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            Todos los templates
+                        </li>
+                        <li>
+                            <svg class="check-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M5 10L8 13L15 6" stroke="#47FFBF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            10 Agentes de IA completos
+                        </li>
+                        <li>
+                            <svg class="check-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M5 10L8 13L15 6" stroke="#47FFBF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            Exportar a PDF y Jira
+                        </li>
+                        <li>
+                            <svg class="check-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M5 10L8 13L15 6" stroke="#47FFBF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            Versionado de PRDs
+                        </li>
+                        <li>
+                            <svg class="check-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M5 10L8 13L15 6" stroke="#47FFBF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            Soporte prioritario
+                        </li>
+                    </ul>
+                    <a href="#" class="btn btn-primary btn-block" data-action="start-pro">Comenzar Prueba de 14 Días</a>
+                </div>
+                
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Team</h3>
+                        <p>Para equipos que colaboran</p>
+                    </div>
+                    <div class="pricing-price">
+                        <span class="currency">$</span>
+                        <span class="amount" data-monthly="49" data-annual="39">49</span>
+                        <span class="period">/usuario/mes</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>
+                            <svg class="check-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M5 10L8 13L15 6" stroke="#47FFBF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            Todo de Pro
+                        </li>
+                        <li>
+                            <svg class="check-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M5 10L8 13L15 6" stroke="#47FFBF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            Colaboración en tiempo real
+                        </li>
+                        <li>
+                            <svg class="check-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M5 10L8 13L15 6" stroke="#47FFBF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            Workspace compartido
+                        </li>
+                        <li>
+                            <svg class="check-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M5 10L8 13L15 6" stroke="#47FFBF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            Templates personalizados
+                        </li>
+                        <li>
+                            <svg class="check-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M5 10L8 13L15 6" stroke="#47FFBF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            Analíticas de equipo
+                        </li>
+                        <li>
+                            <svg class="check-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M5 10L8 13L15 6" stroke="#47FFBF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            SSO y control de acceso
+                        </li>
+                    </ul>
+                    <a href="#" class="btn btn-secondary btn-block" data-action="contact-sales">Contactar Ventas</a>
+                </div>
+            </div>
+            
+            <div class="enterprise-cta">
+                <div class="enterprise-content">
+                    <h3>¿Necesitas una Solución Enterprise?</h3>
+                    <p>Integraciones personalizadas, SLAs, y soporte dedicado para grandes organizaciones</p>
+                </div>
+                <a href="#" class="btn btn-enterprise" data-action="enterprise-contact">
+                    Hablar con Ventas
+                    <svg class="btn-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M7 10H13M13 10L10 7M13 10L10 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">FAQ</span>
+                <h2 class="section-title">Preguntas Frecuentes</h2>
+            </div>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        ¿Cómo funciona la IA de Prisma PRD Builder?
+                        <svg class="faq-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M6 8L10 12L14 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Utilizamos 10 agentes especializados de IA basados en GPT-4 que analizan tu idea desde diferentes perspectivas: estructura, contexto, stakeholders, competencia, compliance, UX, requerimientos funcionales y técnicos. Cada agente aporta su expertise para crear un PRD completo y profesional.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        ¿Puedo personalizar los templates?
+                        <svg class="faq-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M6 8L10 12L14 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Sí, en los planes Pro y Team puedes crear y guardar tus propios templates personalizados. También puedes ajustar los templates existentes para adaptarlos a las necesidades específicas de tu organización.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        ¿Se integra con otras herramientas?
+                        <svg class="faq-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M6 8L10 12L14 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Sí, ofrecemos integraciones con Jira, Linear, Notion, y más. Puedes exportar directamente tus PRDs a estas plataformas o usar nuestra API para integraciones personalizadas.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        ¿Qué tan segura es mi información?
+                        <svg class="faq-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M6 8L10 12L14 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>La seguridad es nuestra prioridad. Utilizamos encriptación de extremo a extremo, cumplimos con GDPR y SOC 2, y nunca usamos tus datos para entrenar modelos de IA. Para empresas, ofrecemos opciones de deployment on-premise.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="final-cta">
+        <div class="container">
+            <div class="cta-card">
+                <div class="cta-content">
+                    <h2>Únete a 10,000+ Product Managers que Ya Ahorran Tiempo</h2>
+                    <p>Comienza gratis hoy y descubre por qué los mejores equipos de producto confían en Prisma PRD Builder</p>
+                    <div class="cta-actions">
+                        <a href="#" class="btn btn-primary btn-large" data-action="final-start-free">
+                            Comenzar Gratis
+                            <svg class="btn-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M7 10H13M13 10L10 7M13 10L10 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                        <p class="cta-note">No requiere tarjeta de crédito • Setup en 2 minutos</p>
+                    </div>
+                </div>
+                <div class="cta-visual">
+                    <div class="floating-cards">
+                        <div class="float-card card-1">
+                            <div class="card-header">
+                                <span class="card-badge">PRD</span>
+                                <span class="card-status">Completado</span>
+                            </div>
+                            <div class="card-content">
+                                <h4>App de Pagos Móviles</h4>
+                                <div class="card-stats">
+                                    <span>10 secciones</span>
+                                    <span>45 min</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="float-card card-2">
+                            <div class="card-header">
+                                <span class="card-badge">PRD</span>
+                                <span class="card-status">En Progreso</span>
+                            </div>
+                            <div class="card-content">
+                                <h4>Dashboard Analytics</h4>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 75%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="float-card card-3">
+                            <div class="mini-stat">
+                                <span class="stat-icon">⚡</span>
+                                <span class="stat-text">70% más rápido</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="/" class="footer-logo">
+                        <svg width="120" height="32" viewBox="0 0 120 32" fill="none">
+                            <text x="0" y="24" font-family="Inter" font-size="24" font-weight="700" fill="#FFFFFF">PRISMA</text>
+                        </svg>
+                    </a>
+                    <p class="footer-tagline">Transforma ideas en PRDs profesionales con IA</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Twitter">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="LinkedIn">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="4" cy="4" r="2" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="GitHub">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Producto</h4>
+                        <ul>
+                            <li><a href="#">Características</a></li>
+                            <li><a href="#">Integraciones</a></li>
+                            <li><a href="#">Precios</a></li>
+                            <li><a href="#">Changelog</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Recursos</h4>
+                        <ul>
+                            <li><a href="#">Blog</a></li>
+                            <li><a href="#">Guías</a></li>
+                            <li><a href="#">Templates</a></li>
+                            <li><a href="#">API Docs</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Empresa</h4>
+                        <ul>
+                            <li><a href="#">Sobre Nosotros</a></li>
+                            <li><a href="#">Carreras</a></li>
+                            <li><a href="#">Contacto</a></li>
+                            <li><a href="#">Partners</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Legal</h4>
+                        <ul>
+                            <li><a href="#">Privacidad</a></li>
+                            <li><a href="#">Términos</a></li>
+                            <li><a href="#">Seguridad</a></li>
+                            <li><a href="#">GDPR</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Prisma. Todos los derechos reservados.</p>
+                <div class="footer-badges">
+                    <img src="/assets/badges/soc2.svg" alt="SOC 2 Compliant" class="compliance-badge">
+                    <img src="/assets/badges/gdpr.svg" alt="GDPR Compliant" class="compliance-badge">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SVG Gradients -->
+    <svg width="0" height="0" style="position: absolute;">
+        <defs>
+            <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#47FFBF;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#47FFBF;stop-opacity:0.6" />
+            </linearGradient>
+            <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#8376FF;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#8376FF;stop-opacity:0.6" />
+            </linearGradient>
+            <linearGradient id="gradient3" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#FF48C7;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#FF48C7;stop-opacity:0.6" />
+            </linearGradient>
+        </defs>
+    </svg>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>

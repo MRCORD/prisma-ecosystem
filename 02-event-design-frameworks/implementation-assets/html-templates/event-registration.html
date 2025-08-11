@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee Party 08/09 - AI-Native Product Management | Prisma</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        :root {
+            --cream: #F8F6F0;
+            --navy: #1B2951;
+            --charcoal: #2C2C2C;
+            --cyan: #47FFBF;
+            --tan: #D4B896;
+            --forest: #3A5D3A;
+            --space-unit: 24px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--cream);
+            color: var(--charcoal);
+            line-height: 1.6;
+            letter-spacing: 0.02em;
+            overflow-x: hidden;
+        }
+
+        /* Granular filter overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 25% 25%, transparent 2%, rgba(0,0,0,0.05) 2.5%, transparent 3%),
+                radial-gradient(circle at 75% 75%, transparent 2%, rgba(0,0,0,0.05) 2.5%, transparent 3%);
+            background-size: 4px 4px;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.15;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: calc(var(--space-unit) * 3) var(--space-unit);
+            position: relative;
+            z-index: 2;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: calc(var(--space-unit) * 3);
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 32px;
+            color: var(--navy);
+            margin-bottom: var(--space-unit);
+            letter-spacing: 0.05em;
+        }
+
+        .logo .accent {
+            color: var(--cyan);
+        }
+
+        .event-title {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: calc(var(--space-unit) / 2);
+            letter-spacing: 0.05em;
+            line-height: 1.1;
+        }
+
+        .event-subtitle {
+            font-size: 24px;
+            font-weight: 400;
+            color: var(--charcoal);
+            margin-bottom: var(--space-unit);
+            letter-spacing: 0.03em;
+        }
+
+        .event-tagline {
+            font-size: 18px;
+            font-weight: 500;
+            color: var(--cyan);
+            margin-bottom: calc(var(--space-unit) * 2);
+            letter-spacing: 0.02em;
+        }
+
+        .event-details {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: calc(var(--space-unit) * 2);
+            margin-bottom: calc(var(--space-unit) * 3);
+            border: 1px solid rgba(75, 255, 191, 0.2);
+            position: relative;
+        }
+
+        .event-details::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(75, 255, 191, 0.1) 0%, transparent 50%);
+            border-radius: 16px;
+            pointer-events: none;
+        }
+
+        .detail-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-unit);
+            position: relative;
+            z-index: 1;
+        }
+
+        .detail-item {
+            text-align: center;
+        }
+
+        .detail-label {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--navy);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: calc(var(--space-unit) / 4);
+        }
+
+        .detail-value {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--charcoal);
+            letter-spacing: 0.02em;
+        }
+
+        .form-section {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: calc(var(--space-unit) * 2.5);
+            margin-bottom: calc(var(--space-unit) * 2);
+            border: 1px solid rgba(27, 41, 81, 0.1);
+        }
+
+        .form-title {
+            font-size: 28px;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: var(--space-unit);
+            letter-spacing: 0.03em;
+        }
+
+        .form-description {
+            font-size: 16px;
+            color: var(--charcoal);
+            margin-bottom: calc(var(--space-unit) * 1.5);
+            line-height: 1.7;
+        }
+
+        .form-group {
+            margin-bottom: calc(var(--space-unit) * 1.5);
+        }
+
+        .form-label {
+            display: block;
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--navy);
+            margin-bottom: calc(var(--space-unit) / 2);
+            letter-spacing: 0.02em;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: calc(var(--space-unit) * 0.75);
+            border: 2px solid rgba(27, 41, 81, 0.15);
+            border-radius: 12px;
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--charcoal);
+            transition: all 0.3s ease;
+            letter-spacing: 0.01em;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--cyan);
+            background: rgba(255, 255, 255, 1);
+            box-shadow: 0 0 0 4px rgba(75, 255, 191, 0.1);
+        }
+
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+            background-position: right 12px center;
+            background-repeat: no-repeat;
+            background-size: 16px;
+            padding-right: 48px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: calc(var(--space-unit) / 2);
+        }
+
+        .checkbox {
+            width: 20px;
+            height: 20px;
+            margin-top: 2px;
+        }
+
+        .checkbox-label {
+            flex: 1;
+            font-size: 14px;
+            color: var(--charcoal);
+            line-height: 1.5;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: calc(var(--space-unit) * 1);
+            background: linear-gradient(135deg, var(--navy) 0%, var(--charcoal) 100%);
+            color: white;
+            border: none;
+            border-radius: 16px;
+            font-family: 'Inter', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(75, 255, 191, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .submit-btn:hover::before {
+            left: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(27, 41, 81, 0.2);
+        }
+
+        .ai-native-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--cyan), #3BFFAA);
+            color: var(--navy);
+            padding: calc(var(--space-unit) / 3) calc(var(--space-unit) / 1.5);
+            border-radius: 24px;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: var(--space-unit);
+        }
+
+        .exclusive-note {
+            text-align: center;
+            font-size: 14px;
+            color: var(--forest);
+            font-weight: 500;
+            margin-top: var(--space-unit);
+            padding: var(--space-unit);
+            background: rgba(58, 93, 58, 0.1);
+            border-radius: 12px;
+            letter-spacing: 0.02em;
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding: var(--space-unit);
+            }
+            
+            .event-title {
+                font-size: 36px;
+            }
+            
+            .event-subtitle {
+                font-size: 20px;
+            }
+            
+            .detail-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                PRISMA<span class="accent">.</span>
+            </div>
+            
+            <div class="ai-native-badge">
+                AI-Native Product Management
+            </div>
+            
+            <h1 class="event-title">Coffee Party 08/09</h1>
+            <h2 class="event-subtitle">From Manual to Magical</h2>
+            <p class="event-tagline">Be part of the beginning of AI-native product management in Lima</p>
+        </div>
+
+        <div class="event-details">
+            <div class="detail-grid">
+                <div class="detail-item">
+                    <div class="detail-label">Fecha</div>
+                    <div class="detail-value">Viernes 8 Sept</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">Hora</div>
+                    <div class="detail-value">6:00 - 8:30 PM</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">Lugar</div>
+                    <div class="detail-value">Specialty Coffee Shop</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">Cupos</div>
+                    <div class="detail-value">Solo 20 personas</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h3 class="form-title">Únete a la Revolución AI</h3>
+            <p class="form-description">
+                Este encuentro íntimo conecta a los 20 product managers más sofisticados de Lima para explorar cómo la inteligencia artificial está transformando nuestros workflows. Serás testigo de la creación de PRDs completos en 15 minutos y conocerás casos de éxito local.
+            </p>
+
+            <form id="registrationForm" action="#" method="POST">
+                <div class="form-group">
+                    <label class="form-label" for="name">Nombre Completo *</label>
+                    <input type="text" id="name" name="name" class="form-input" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="email">Email Profesional *</label>
+                    <input type="email" id="email" name="email" class="form-input" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="company">Empresa *</label>
+                    <input type="text" id="company" name="company" class="form-input" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="role">Cargo/Posición *</label>
+                    <input type="text" id="role" name="role" class="form-input" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="experience">Años de Experiencia en PM *</label>
+                    <select id="experience" name="experience" class="form-input form-select" required>
+                        <option value="">Selecciona tu experiencia</option>
+                        <option value="3-5">3-5 años</option>
+                        <option value="5-8">5-8 años</option>
+                        <option value="8-12">8-12 años</option>
+                        <option value="12+">12+ años</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="ai-experience">¿Has usado herramientas de AI en tu trabajo de PM? *</label>
+                    <select id="ai-experience" name="ai_experience" class="form-input form-select" required>
+                        <option value="">Selecciona tu nivel</option>
+                        <option value="no">No, aún no he probado</option>
+                        <option value="experimenting">Experimentando ocasionalmente</option>
+                        <option value="regular">Uso regular en algunos workflows</option>
+                        <option value="advanced">Usuario avanzado, integrado en mi proceso</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="motivation">¿Qué te motiva a asistir a este evento?</label>
+                    <textarea id="motivation" name="motivation" class="form-input form-textarea" placeholder="Comparte tu interés en AI para product management..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="linkedin">LinkedIn Profile (opcional)</label>
+                    <input type="url" id="linkedin" name="linkedin" class="form-input" placeholder="https://linkedin.com/in/tu-perfil">
+                </div>
+
+                <div class="form-group">
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="terms" name="terms" class="checkbox" required>
+                        <label for="terms" class="checkbox-label">
+                            Acepto formar parte de la comunidad Prisma y recibir comunicaciones sobre eventos futuros. Este evento es gratuito y está diseñado para crear valor genuino para la comunidad de product managers en Lima.
+                        </label>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    Solicitar Invitación
+                </button>
+
+                <div class="exclusive-note">
+                    <strong>Evento por invitación únicamente.</strong> Revisaremos todas las aplicaciones y confirmaremos tu participación dentro de 48 horas. Priorizamos diversidad de empresas y experiencias para crear el mejor networking.
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('registrationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Simulate form submission
+            const submitBtn = document.querySelector('.submit-btn');
+            submitBtn.textContent = 'Enviando...';
+            submitBtn.disabled = true;
+            
+            setTimeout(() => {
+                alert('¡Gracias por tu interés! Revisaremos tu aplicación y te contactaremos dentro de 48 horas.');
+                // In production, redirect to confirmation page
+                window.location.href = 'confirmation.html';
+            }, 2000);
+        });
+    </script>
+</body>
+</html>

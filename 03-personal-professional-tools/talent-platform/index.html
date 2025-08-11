@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prisma Talent - Talento en Producto Validado por Comunidad</title>
+    <meta name="description" content="3-5 candidatos prioritarios con evidencia entregados en ≤10 días laborales. Community-driven talent acquisition especializado en producto digital.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="../../00-shared-resources/brand-guidelines/favicon.png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="nav">
+                <div class="logo-container">
+                    <a href="https://saas.getprisma.io">
+                        <img src="../../00-shared-resources/brand-guidelines/logo-4wtbg.svg" alt="Prisma" class="logo-prisma">
+                    </a>
+                    <span class="logo-separator">|</span>
+                    <div class="logo-talent">
+                        <span class="logo-text">Prisma Talent</span>
+                        <img src="../../assets/trebol-lilac.svg" alt="Trébol" class="logo-trebol">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="section-label">COMMUNITY DRIVEN TALENT ACQUISITION</div>
+                <h1 class="hero-title">
+                    Encuentra el mejor talento en Product, Growth, Design y Tech en <span class="highlight">10 días</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Acceso exclusivo a <strong>+2500 profesionales verificados</strong> de nuestra comunidad curada. Validación comunitaria, introduciones warm y assessment cultural superior.
+                    <strong>Community-validated hiring con expertise especializado.</strong>
+                </p>
+                <div class="hero-cta">
+                    <a href="#talent-request" class="btn-primary">Acceder a la comunidad</a>
+                    <div class="hero-metrics">
+                        <span class="metric">10 días</span> vs <span class="metric-comparison">2+ meses</span> búsqueda tradicional
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Value Proposition -->
+    <section class="value-prop">
+        <div class="container">
+            <div class="section-label">LA VENTAJA DE PRISMA</div>
+            <h2 class="section-title">Community-validated hiring para Product, Growth, Design y Tech</h2>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">✅</div>
+                    <h3>Community-Validated Candidates</h3>
+                    <p>Acceso a +2500 profesionales verificados de nuestra comunidad curada, pre-validados a través de eventos y interacciones profesionales.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">🎯</div>
+                    <h3>Domain Specialization</h3>
+                    <p>Expertise profundo en Product, Growth y Design desde eventos líderes de industria (Coffee Meetups, Product Nights, World Product Day).</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">🤝</div>
+                    <h3>Relationship Ecosystem</h3>
+                    <p>Introducciones warm través de relaciones profesionales existentes vs. cold outreach, leveraging Leadership Circle de ejecutivos senior.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">🧠</div>
+                    <h3>Evidence-Based Process</h3>
+                    <p>Cultural intelligence superior, screening manual con contexto comunitario, consultoría para definición de roles y Position Blueprint methodology.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Talent Request Form -->
+    <section id="talent-request" class="form-section">
+        <div class="container">
+            <div class="form-header">
+                <div class="section-label">CONECTA CON NUESTRA COMUNIDAD</div>
+                <h2 class="section-title">Community-validated hiring + consultoría para definición de roles</h2>
+                <p class="section-subtitle">Información básica para acceder a +2500 profesionales verificados con introduciones warm y cultural intelligence. Sin compromiso.</p>
+            </div>
+
+            <form class="talent-form" id="talentRequestForm" action="#" method="POST">
+                <!-- Step 1: Lead Information -->
+                <fieldset class="form-section-group" id="leadInfoSection">
+                    <legend class="form-section-title">Información de contacto</legend>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="contact_name" class="form-label">Nombre completo *</label>
+                            <input type="text" id="contact_name" name="contact_name" class="form-input" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="position" class="form-label">Tu posición *</label>
+                            <input type="text" id="position" name="position" class="form-input" placeholder="e.g. Head of Product, VP Engineering" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="company_name" class="form-label">Nombre de la empresa *</label>
+                        <input type="text" id="company_name" name="company_name" class="form-input" required>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="contact_email" class="form-label">Email *</label>
+                            <input type="email" id="contact_email" name="contact_email" class="form-input" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contact_phone" class="form-label">Teléfono/WhatsApp *</label>
+                            <input type="tel" id="contact_phone" name="contact_phone" class="form-input" placeholder="+51 999 999 999" required>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <!-- Step 2: Intent Qualification -->
+                <fieldset class="form-section-group" id="intentSection">
+                    <legend class="form-section-title">¿En qué te podemos ayudar?</legend>
+                    
+                    <div class="form-group">
+                        <div class="intent-options">
+                            <label class="intent-option">
+                                <input type="radio" name="intent" value="hiring" id="intent_hiring" required>
+                                <div class="intent-card">
+                                    <div class="intent-icon">🎯</div>
+                                    <h4>Busco contratar talento</h4>
+                                    <p>Necesito encontrar candidatos para una posición específica</p>
+                                </div>
+                            </label>
+
+                            <label class="intent-option">
+                                <input type="radio" name="intent" value="conversation" id="intent_conversation" required>
+                                <div class="intent-card">
+                                    <div class="intent-icon">💬</div>
+                                    <h4>Quiero conversar</h4>
+                                    <p>Me interesa conocer más sobre el servicio y explorar opciones</p>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <!-- Step 3: Position Details (Conditional) -->
+                <fieldset class="form-section-group" id="positionSection" style="display: none;">
+                    <legend class="form-section-title">Detalles de la posición</legend>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="role_title" class="form-label">Título del rol *</label>
+                            <input type="text" id="role_title" name="role_title" class="form-input" placeholder="e.g. Senior Product Manager">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="role_type" class="form-label">Tipo de rol *</label>
+                            <select id="role_type" name="role_type" class="form-select">
+                                <option value="">Seleccionar</option>
+                                <option value="Product Manager">Product Manager</option>
+                                <option value="Growth Manager">Growth Manager</option>
+                                <option value="Product Designer">Product Designer</option>
+                                <option value="Engineering Manager">Engineering Manager</option>
+                                <option value="Data/Analytics">Data/Analytics</option>
+                                <option value="Otro">Otro</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="level" class="form-label">Nivel de seniority *</label>
+                            <select id="level" name="level" class="form-select">
+                                <option value="">Seleccionar</option>
+                                <option value="Mid-level (3-5 años)">Mid-level (3-5 años)</option>
+                                <option value="Senior (5-8 años)">Senior (5-8 años)</option>
+                                <option value="Lead/Staff (8+ años)">Lead/Staff (8+ años)</option>
+                                <option value="Director+ (10+ años)">Director+ (10+ años)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="work_mode" class="form-label">Modalidad *</label>
+                            <select id="work_mode" name="work_mode" class="form-select">
+                                <option value="">Seleccionar</option>
+                                <option value="Presencial">Presencial</option>
+                                <option value="Híbrido">Híbrido</option>
+                                <option value="Remoto">Remoto</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">¿Para cuándo necesitas el candidato? *</label>
+                        <div class="urgency-toggle">
+                            <label class="toggle-option">
+                                <input type="radio" name="urgency" value="ASAP" id="urgency_asap">
+                                <span class="toggle-label">ASAP (2-3 semanas)</span>
+                            </label>
+                            <label class="toggle-option">
+                                <input type="radio" name="urgency" value="Standard" id="urgency_standard">
+                                <span class="toggle-label">Estándar (1-2 meses)</span>
+                            </label>
+                            <label class="toggle-option">
+                                <input type="radio" name="urgency" value="Flexible" id="urgency_flexible">
+                                <span class="toggle-label">Flexible (2+ meses)</span>
+                            </label>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <!-- Legal -->
+                <div class="form-agreement">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="terms_acceptance" name="terms_acceptance" required>
+                        <span class="checkmark"></span>
+                        Acepto los <a href="terminos.html" target="_blank">términos y condiciones</a> *
+                    </label>
+                </div>
+
+                <!-- Submit -->
+                <div class="form-submit">
+                    <button type="submit" class="btn-primary btn-large" id="submitBtn">
+                        <span class="btn-text">Enviar solicitud</span>
+                        <span class="btn-loading" style="display: none;">Enviando...</span>
+                    </button>
+                    <p class="form-note">Te contactaremos en ≤24 horas para agendar una llamada de 15 minutos</p>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="../../00-shared-resources/brand-guidelines/logo-4dkbg.svg" alt="Prisma" class="footer-logo-prisma">
+                    <span class="footer-logo-separator">|</span>
+                    <div class="footer-logo-talent">
+                        <span class="footer-logo-text">Prisma Talent</span>
+                        <img src="../../assets/trebol-lilac.svg" alt="Trébol" class="footer-logo-icon">
+                    </div>
+                </div>
+                <div class="footer-info">
+                    <p>Community-driven talent acquisition</p>
+                    <p>Lima, Perú • <a href="mailto:hello@getprisma.io">hello@getprisma.io</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

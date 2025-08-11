@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propuesta Workshop AI - PUCP | Luis Eduardo Huayaney</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #2d3748;
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d3748 100%);
+            color: white;
+            padding: 3rem 3rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(71, 255, 191, 0.2) 0%, transparent 70%);
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .prisma-logo {
+            width: 120px;
+            height: auto;
+            filter: brightness(1.2);
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #47FFBF 0%, #8376FF 50%, #FF48C7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header .subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            font-weight: 400;
+        }
+
+        .content {
+            padding: 3rem;
+        }
+
+        .section {
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .section h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #1a202c;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .section h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #2d3748;
+            margin: 2rem 0 1rem;
+        }
+
+        .icon {
+            width: 28px;
+            height: 28px;
+            background: linear-gradient(135deg, #47FFBF 0%, #8376FF 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(71, 255, 191, 0.1) 0%, rgba(131, 118, 255, 0.1) 100%);
+            border: 1px solid rgba(71, 255, 191, 0.3);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .module-card {
+            background: #f7fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .module-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .module-card h4 {
+            color: #8376FF;
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .module-duration {
+            background: #47FFBF;
+            color: #1a202c;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .pricing-section {
+            background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+            color: white;
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin: 2rem 0;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .pricing-item {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            padding: 1.5rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #47FFBF;
+            margin-bottom: 0.5rem;
+        }
+
+        .price-unit {
+            font-size: 1rem;
+            opacity: 0.8;
+            font-weight: 400;
+        }
+
+        .facilitator-profile {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 2rem;
+            align-items: start;
+            margin: 2rem 0;
+        }
+
+        .credentials-list {
+            background: #f7fafc;
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+
+        .credential-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            padding: 0.75rem;
+            background: white;
+            border-radius: 6px;
+            border-left: 3px solid #47FFBF;
+        }
+
+        .credential-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .credential-icon {
+            width: 24px;
+            height: 24px;
+            background: #8376FF;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.75rem;
+            flex-shrink: 0;
+        }
+
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: #f7fafc;
+            border-radius: 8px;
+        }
+
+        .timeline-time {
+            background: #8376FF;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-weight: 600;
+            min-width: 120px;
+            text-align: center;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #8376FF 0%, #FF48C7 100%);
+            color: white;
+            text-align: center;
+            padding: 3rem;
+            border-radius: 12px;
+            margin: 3rem 0;
+        }
+
+        .cta-button {
+            background: white;
+            color: #8376FF;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .signature {
+            text-align: right;
+            margin: 3rem 0 2rem;
+            padding: 2rem;
+            background: #f7fafc;
+            border-radius: 8px;
+            border-left: 4px solid #47FFBF;
+        }
+
+        .signature-name {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1a202c;
+            margin-bottom: 0.5rem;
+        }
+
+        .signature-title {
+            color: #8376FF;
+            font-weight: 500;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #1a202c;
+            color: white;
+            padding: 2rem 3rem;
+            margin-top: 2rem;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        li {
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+
+        li::before {
+            content: "→";
+            color: #47FFBF;
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #8376FF;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #718096;
+            margin-top: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                border-radius: 0;
+                margin: 0;
+            }
+            
+            .header, .content {
+                padding: 2rem 1.5rem;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .modules-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .facilitator-profile {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+        }
+
+        @media print {
+            body {
+                padding: 0;
+                background: white;
+            }
+            
+            .container {
+                box-shadow: none;
+                border-radius: 0;
+            }
+            
+            .header::before {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo-section">
+                <svg class="prisma-logo" viewBox="0 0 1964 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M751.992 197.543H672.393C667.496 197.543 663.49 201.55 663.49 206.447V432.866C663.49 437.763 667.496 441.77 672.393 441.77H679.516C684.413 441.77 688.42 437.763 688.42 432.866V352.823H750.656C811.557 352.823 847.884 323.708 847.884 274.382C847.884 225.055 812.003 197.543 751.992 197.543ZM750.656 328.516H688.42V221.761H751.369C796.866 221.761 823.043 241.082 823.043 275.272C823.043 321.571 777.724 328.516 750.746 328.516H750.656Z" fill="currentColor"/>
+                    <path d="M1017.94 340.892C1059.35 333.502 1084.37 307.414 1084.37 269.841C1084.37 250.52 1077.87 233.781 1065.58 221.494C1049.64 205.556 1025.69 197.543 994.26 197.543H901.751C896.854 197.543 892.848 201.55 892.848 206.447V432.866C892.848 437.763 896.854 441.77 901.751 441.77H908.874C913.771 441.77 917.778 437.763 917.778 432.866V343.118H988.562L1060.95 438.298C1062.64 440.524 1065.22 441.77 1068.07 441.77H1076.8C1080.18 441.77 1083.3 439.811 1084.81 436.784C1086.32 433.757 1085.97 430.106 1083.92 427.435L1018.03 340.892H1017.94ZM917.778 221.761H993.637C1035.48 221.761 1059.43 239.39 1059.43 270.731C1059.43 302.072 1033.7 318.722 990.699 318.722H917.778V221.672V221.761Z" fill="currentColor"/>
+                    <path d="M1158.35 197.543H1151.23C1146.31 197.543 1142.33 201.529 1142.33 206.447V432.866C1142.33 437.784 1146.31 441.77 1151.23 441.77H1158.35C1163.27 441.77 1167.26 437.784 1167.26 432.866V206.447C1167.26 201.529 1163.27 197.543 1158.35 197.543Z" fill="currentColor"/>
+                    <path d="M1316.66 306.079C1261.19 294.771 1250.69 281.683 1250.69 260.759C1250.69 239.835 1272.05 218.556 1307.76 218.556C1338.21 218.556 1361.36 231.288 1375.51 241.972C1379.43 244.91 1384.95 244.198 1387.89 240.37L1392.43 234.582C1393.86 232.712 1394.57 230.309 1394.21 227.994C1393.95 225.679 1392.7 223.542 1390.83 222.028C1367.15 203.865 1338.65 194.338 1308.47 194.338C1262.08 194.338 1225.84 223.72 1225.84 261.827C1225.84 306.791 1266.44 321.215 1310.25 330.029C1372.13 342.583 1377.21 358.165 1377.21 376.328C1377.21 402.505 1352.28 420.847 1316.57 420.847C1286.83 420.847 1259.5 409.628 1237.69 388.437C1234.21 385.054 1228.6 385.054 1225.22 388.437L1220.06 393.601C1218.37 395.293 1217.39 397.608 1217.47 400.012C1217.56 402.416 1218.54 404.731 1220.23 406.334C1246.95 431.62 1280.07 444.975 1315.95 444.975C1366.7 444.975 1402.14 416.573 1402.14 375.26C1402.14 338.399 1377.38 318.366 1316.75 306.079H1316.66Z" fill="currentColor"/>
+                    <path d="M1672.01 197.543H1665.51C1662.57 197.543 1659.9 198.968 1658.21 201.283L1566.85 331.276L1475.5 201.283C1473.81 198.879 1471.14 197.543 1468.2 197.543H1461.43C1456.54 197.543 1452.53 201.55 1452.53 206.447V432.866C1452.53 437.763 1456.54 441.77 1461.43 441.77H1468.56C1473.45 441.77 1477.46 437.763 1477.46 432.866V246.602L1559.29 363.24C1562.58 367.959 1570.86 367.959 1574.16 363.24L1655.98 246.602V432.866C1655.98 437.763 1659.99 441.77 1664.88 441.77H1672.01C1676.9 441.77 1680.91 437.763 1680.91 432.866V206.447C1680.91 201.55 1676.9 197.543 1672.01 197.543Z" fill="currentColor"/>
+                    <path d="M1962.8 429.038L1853.82 201.016C1852.31 197.899 1849.19 195.94 1845.81 195.94H1839.66C1836.28 195.94 1833.07 197.899 1831.65 201.016L1722.67 429.038C1721.33 431.798 1721.51 435.003 1723.2 437.585C1724.8 440.167 1727.65 441.77 1730.77 441.77H1738.16C1741.63 441.77 1744.75 439.811 1746.17 436.695L1776.09 373.835H1909.11L1939.03 436.695C1940.54 439.811 1943.66 441.77 1947.04 441.77H1954.79C1957.81 441.77 1960.66 440.167 1962.35 437.585C1963.96 435.003 1964.22 431.798 1962.89 429.038H1962.8ZM1787.75 349.617L1842.51 234.938L1897.27 349.617H1787.75Z" fill="currentColor"/>
+                    <path d="M263.538 500H35.4263C8.18116 500 -8.82481 470.529 4.79777 446.934L118.854 249.451L232.82 51.8793C246.443 28.2847 280.455 28.2847 294.077 51.8793L408.133 249.362L522.189 446.845C535.811 470.44 518.805 499.911 491.56 499.911H263.449L263.538 500Z" fill="url(#prisma-gradient)"/>
+                    <path d="M445.517 250.103C476.056 229.981 526.184 224.906 611.57 219.386C526.273 213.866 476.056 208.791 445.517 188.668C456.557 164.539 479.885 136.582 515.677 95.8923C474.988 131.596 446.941 155.012 422.901 166.053C402.779 135.514 397.704 85.386 392.184 0C386.663 85.2969 381.588 135.514 361.466 166.053C337.337 155.012 309.38 131.685 268.69 95.8923C304.394 136.582 327.81 164.628 338.851 188.668C308.311 208.791 258.184 213.866 172.798 219.386C258.095 224.906 308.311 229.981 338.851 250.103C327.81 274.232 304.483 302.19 268.69 342.879C309.38 307.176 337.426 283.759 361.466 272.719C381.588 303.258 386.663 353.386 392.184 438.772C397.704 353.475 402.779 303.258 422.901 272.719C447.03 283.759 474.988 307.087 515.677 342.879C479.974 302.19 456.557 274.143 445.517 250.103Z" fill="currentColor"/>
+                    <defs>
+                        <linearGradient id="prisma-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="12%" stop-color="#47FFBF"/>
+                            <stop offset="34%" stop-color="#2870FF"/>
+                            <stop offset="61%" stop-color="#FF4895"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </div>
+            <h1>Taller Experiencial AI Hands-On</h1>
+            <p class="subtitle">Transformación Digital para Equipos Académico-Administrativos PUCP</p>
+            <p style="margin-top: 1rem; font-size: 1.1rem; color: #47FFBF; font-weight: 600;">🔥 NUEVAS MODALIDADES: 2 horas máximo por sesión</p>
+        </div>
+
+        <div class="content">
+            <!-- Executive Summary -->
+            <div class="section">
+                <h2>
+                    <div class="icon">📋</div>
+                    Resumen Ejecutivo
+                </h2>
+                <div class="highlight-box">
+                    <p style="font-size: 1.1rem; margin-bottom: 1rem;">
+                        <strong>Propuesta profesional para implementar capacidades AI inmediatas en PUCP con DOS MODALIDADES flexibles: Workshop Compacto (2h) o Workshop Completo Dividido (2x2h).</strong>
+                    </p>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <span class="stat-number">30</span>
+                            <span class="stat-label">Participantes</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">3-4</span>
+                            <span class="stat-label">Herramientas AI</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">2h</span>
+                            <span class="stat-label">Máximo por Sesión</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">90%</span>
+                            <span class="stat-label">Tasa de Adopción</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Facilitator Profile -->
+            <div class="section">
+                <h2>
+                    <div class="icon">👨‍💼</div>
+                    Perfil del Facilitador
+                </h2>
+                <div class="facilitator-profile">
+                    <div class="credentials-list">
+                        <div class="credential-item">
+                            <div class="credential-icon">🚀</div>
+                            <div>
+                                <strong>Lead Product Manager - AI</strong><br>
+                                <span style="color: #718096;">Interbank (IBK) - Actual</span>
+                            </div>
+                        </div>
+                        <div class="credential-item">
+                            <div class="credential-icon">💡</div>
+                            <div>
+                                <strong>Ex-Open Innovation Lead</strong><br>
+                                <span style="color: #718096;">Mibanco (Anterior)</span>
+                            </div>
+                        </div>
+                        <div class="credential-item">
+                            <div class="credential-icon">🌟</div>
+                            <div>
+                                <strong>Makers Fellow</strong><br>
+                                <span style="color: #718096;">Startup Ecosystem</span>
+                            </div>
+                        </div>
+                        <div class="credential-item">
+                            <div class="credential-icon">🏆</div>
+                            <div>
+                                <strong>Startup Peru 2025 Winner</strong><br>
+                                <span style="color: #718096;">Generative AI Category</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3>Living Proof de Transformación AI</h3>
+                        <p style="margin-bottom: 1.5rem;">Luis Eduardo Huayaney personifica la transformación AI corporativa exitosa. Como Lead Product Manager - AI en Interbank, ha implementado exactamente las herramientas y metodologías que enseñará en este taller.</p>
+                        
+                        <h4 style="color: #8376FF; margin-bottom: 1rem;">Track Record Comprobado:</h4>
+                        <ul>
+                            <li>Transformó procesos de innovación en sector financiero peruano</li>
+                            <li>Implementó frameworks de experimentación en Mibanco (anterior rol)</li>
+                            <li>3x mejora en eficiencia de equipos usando herramientas AI</li>
+                            <li>Experiencia en JTBD y Design Sprint aplicados a AI</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Workshop Modalities -->
+            <div class="section">
+                <h2>
+                    <div class="icon">🎯</div>
+                    Modalidades Disponibles
+                </h2>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 2rem 0;">
+                    <!-- Modalidad A -->
+                    <div style="background: linear-gradient(135deg, rgba(71, 255, 191, 0.1) 0%, rgba(131, 118, 255, 0.1) 100%); border: 2px solid #47FFBF; border-radius: 12px; padding: 2rem;">
+                        <h3 style="color: #47FFBF; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                            ⚡ Modalidad A: Compacto
+                        </h3>
+                        <div style="background: #47FFBF; color: #1a202c; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.9rem; font-weight: 600; display: inline-block; margin-bottom: 1rem;">
+                            2 horas intensivas
+                        </div>
+                        <p><strong>Ideal para:</strong> Adopción rápida de herramientas esenciales</p>
+                        <ul style="margin-top: 1rem;">
+                            <li>3 módulos esenciales (40-30 min c/u)</li>
+                            <li>3 herramientas AI dominadas</li>
+                            <li>20+ recursos digitales creados</li>
+                            <li>Implementación inmediata</li>
+                            <li>ROI visible en primera semana</li>
+                        </ul>
+                        <div style="margin-top: 1.5rem; padding: 1rem; background: rgba(71, 255, 191, 0.2); border-radius: 8px;">
+                            <strong>Inversión:</strong> <span style="color: #1a202c; font-size: 1.2rem; font-weight: 700;">S/ 6,300 PEN</span>
+                        </div>
+                    </div>
+
+                    <!-- Modalidad B -->
+                    <div style="background: linear-gradient(135deg, rgba(131, 118, 255, 0.1) 0%, rgba(255, 72, 199, 0.1) 100%); border: 2px solid #8376FF; border-radius: 12px; padding: 2rem;">
+                        <h3 style="color: #8376FF; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                            🚀 Modalidad B: Completo Dividido
+                        </h3>
+                        <div style="background: #8376FF; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.9rem; font-weight: 600; display: inline-block; margin-bottom: 1rem;">
+                            2 sesiones de 2h cada una
+                        </div>
+                        <p><strong>Ideal para:</strong> Transformación profunda con práctica</p>
+                        <ul style="margin-top: 1rem;">
+                            <li>4 módulos completos (50-60 min c/u)</li>
+                            <li>4 herramientas AI dominadas</li>
+                            <li>30+ recursos digitales creados</li>
+                            <li>Práctica entre sesiones (1 semana)</li>
+                            <li>Network sólido de early adopters</li>
+                        </ul>
+                        <div style="margin-top: 1.5rem; padding: 1rem; background: rgba(131, 118, 255, 0.2); border-radius: 8px;">
+                            <strong>Inversión:</strong> <span style="color: #1a202c; font-size: 1.2rem; font-weight: 700;">S/ 8,400 PEN</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="background: #f7fafc; border-radius: 8px; padding: 2rem; margin: 2rem 0;">
+                    <h3 style="color: #2d3748; margin-bottom: 1rem;">📋 Módulos Incluidos</h3>
+                    <div class="modules-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+                        <div class="module-card" style="border-left: 4px solid #47FFBF;">
+                            <h4>Módulo 1: Lovable & Prompts Creativos</h4>
+                            <div style="background: #47FFBF; color: #1a202c; padding: 0.2rem 0.6rem; border-radius: 15px; font-size: 0.8rem; font-weight: 600; display: inline-block; margin-bottom: 0.8rem;">
+                                Ambas modalidades: 40-50 min
+                            </div>
+                            <p>Recursos digitales institucionales inmediatamente utilizables</p>
+                        </div>
+                        
+                        <div class="module-card" style="border-left: 4px solid #8376FF;">
+                            <h4>Módulo 2: Vibe Coding - Prototipo Web</h4>
+                            <div style="background: #8376FF; color: white; padding: 0.2rem 0.6rem; border-radius: 15px; font-size: 0.8rem; font-weight: 600; display: inline-block; margin-bottom: 0.8rem;">
+                                Solo Modalidad B: 50 min
+                            </div>
+                            <p>Sitio web institucional funcional con lógica no-code</p>
+                        </div>
+                        
+                        <div class="module-card" style="border-left: 4px solid #FF48C7;">
+                            <h4>Módulo 3: NotebookLM Avanzado</h4>
+                            <div style="background: #FF48C7; color: white; padding: 0.2rem 0.6rem; border-radius: 15px; font-size: 0.8rem; font-weight: 600; display: inline-block; margin-bottom: 0.8rem;">
+                                Ambas modalidades: 40-60 min
+                            </div>
+                            <p>Resúmenes accionables y estrategias inmediatas</p>
+                        </div>
+                        
+                        <div class="module-card" style="border-left: 4px solid #2d3748;">
+                            <h4>Módulo 4: Claude Code + Cursor</h4>
+                            <div style="background: #2d3748; color: white; padding: 0.2rem 0.6rem; border-radius: 15px; font-size: 0.8rem; font-weight: 600; display: inline-block; margin-bottom: 0.8rem;">
+                                Ambas modalidades: 30-40 min
+                            </div>
+                            <p>Demo avanzada de ventaja competitiva</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Program Timeline -->
+            <div class="section">
+                <h2>
+                    <div class="icon">⏱️</div>
+                    Cronogramas por Modalidad
+                </h2>
+                
+                <!-- Modalidad A Timeline -->
+                <div style="background: linear-gradient(135deg, rgba(71, 255, 191, 0.1) 0%, rgba(131, 118, 255, 0.1) 100%); border: 2px solid #47FFBF; border-radius: 12px; padding: 2rem; margin-bottom: 2rem;">
+                    <h3 style="color: #47FFBF; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                        ⚡ Modalidad A: Compacto - 2 Horas Intensivas
+                    </h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-time">14:00 - 14:10</div>
+                            <div>
+                                <strong>Arrival + Quick Networking</strong><br>
+                                "AI Transformation en 2 Horas"
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">14:10 - 14:50</div>
+                            <div>
+                                <strong>Módulo 1: Lovable & Prompts Creativos</strong><br>
+                                Recursos digitales PUCP personalizados
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">14:50 - 15:30</div>
+                            <div>
+                                <strong>Módulo 3: NotebookLM Avanzado</strong><br>
+                                Estrategias y highlights procesables
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">15:30 - 15:40</div>
+                            <div>
+                                <strong>Strategic Break</strong><br>
+                                Tool integration y conexiones clave
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">15:40 - 16:10</div>
+                            <div>
+                                <strong>Módulo 4: Claude Code + Implementación</strong><br>
+                                Playbook automatizado + roadmap
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">16:10 - 16:20</div>
+                            <div>
+                                <strong>Consolidation + Commitment Building</strong><br>
+                                "Your AI Implementation Roadmap"
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modalidad B Timeline -->
+                <div style="background: linear-gradient(135deg, rgba(131, 118, 255, 0.1) 0%, rgba(255, 72, 199, 0.1) 100%); border: 2px solid #8376FF; border-radius: 12px; padding: 2rem;">
+                    <h3 style="color: #8376FF; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                        🚀 Modalidad B: Completo Dividido - 2 Sesiones de 2h
+                    </h3>
+                    
+                    <h4 style="color: #8376FF; margin-bottom: 1rem;">📅 Sesión 1: Fundamentos AI + Herramientas Básicas</h4>
+                    <div class="timeline" style="margin-bottom: 2rem;">
+                        <div class="timeline-item">
+                            <div class="timeline-time">14:00 - 14:15</div>
+                            <div>
+                                <strong>Arrival Premium + Strategic Networking</strong><br>
+                                "AI Tools Foundation - Sesión 1"
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">14:15 - 15:05</div>
+                            <div>
+                                <strong>Módulo 1: Lovable & Prompts Creativos</strong><br>
+                                Recursos digitales PUCP personalizados
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">15:05 - 15:15</div>
+                            <div>
+                                <strong>Strategic Break</strong><br>
+                                Conexiones y networking
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">15:15 - 16:05</div>
+                            <div>
+                                <strong>Módulo 2: Vibe Coding</strong><br>
+                                Sitio web institucional funcional
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">16:05 - 16:20</div>
+                            <div>
+                                <strong>Tarea Casa + Networking Final</strong><br>
+                                Práctica herramientas antes Sesión 2
+                            </div>
+                        </div>
+                    </div>
+
+                    <h4 style="color: #FF48C7; margin-bottom: 1rem;">📅 Sesión 2: Herramientas Avanzadas + Implementación (1 semana después)</h4>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-time">14:00 - 14:10</div>
+                            <div>
+                                <strong>Arrival + Review Sesión 1</strong><br>
+                                "Advanced AI Tools - Sesión 2"
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">14:10 - 15:10</div>
+                            <div>
+                                <strong>Módulo 3: NotebookLM Avanzado</strong><br>
+                                Estrategias complejas y highlights
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">15:10 - 15:20</div>
+                            <div>
+                                <strong>Strategic Break</strong><br>
+                                Networking avanzado
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">15:20 - 16:00</div>
+                            <div>
+                                <strong>Módulo 4: Claude Code + Cursor</strong><br>
+                                Playbook automatizado de seguimiento
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">16:00 - 16:20</div>
+                            <div>
+                                <strong>Consolidation + Advanced Implementation</strong><br>
+                                "Your Complete AI Transformation Roadmap"
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Value Proposition -->
+            <div class="section">
+                <h2>
+                    <div class="icon">💎</div>
+                    Propuesta de Valor
+                </h2>
+                <div class="highlight-box">
+                    <h3 style="color: #8376FF;">Promesa Principal</h3>
+                    <p style="font-size: 1.2rem; margin-bottom: 2rem;">"En máximo 2 horas por sesión, dominarás herramientas AI que transformarán tu productividad académica inmediatamente"</p>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <span class="stat-number">20-30+</span>
+                            <span class="stat-label">Recursos Digitales Creados</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">3-4</span>
+                            <span class="stat-label">Herramientas Dominadas</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">2h Max</span>
+                            <span class="stat-label">Por Sesión</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">100%</span>
+                            <span class="stat-label">Hands-on Experience</span>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Diferenciadores Únicos</h3>
+                <ul>
+                    <li>Framework probado en transformación corporativa peruana</li>
+                    <li>Hands-on mastery garantizado (no solo teoría)</li>
+                    <li>Recursos digitales creados durante el taller</li>
+                    <li>Network exclusivo de early adopters AI PUCP</li>
+                    <li>Metodología "inevitable conversion" para adopción real</li>
+                </ul>
+
+                <div style="background: #f0f8ff; border-left: 4px solid #47FFBF; padding: 1.5rem; margin: 2rem 0; border-radius: 8px;">
+                    <strong>FOMO Element:</strong> "While other universities debate AI adoption, PUCP professionals master it"
+                </div>
+            </div>
+
+            <!-- Investment & Pricing -->
+            <div class="pricing-section">
+                <h2 style="color: white; display: flex; align-items: center; gap: 0.75rem; margin-bottom: 2rem;">
+                    <div style="background: rgba(255, 255, 255, 0.2); padding: 0.5rem; border-radius: 8px;">💰</div>
+                    Inversión Profesional
+                </h2>
+                
+                <div class="pricing-grid">
+                    <div class="pricing-item" style="border: 2px solid #47FFBF;">
+                        <div class="price">S/ 6,300<span class="price-unit">PEN</span></div>
+                        <h4 style="color: #47FFBF; margin-bottom: 1rem;">Modalidad A: Compacto</h4>
+                        <ul style="color: rgba(255, 255, 255, 0.9);">
+                            <li>2 horas intensivas</li>
+                            <li>3 herramientas AI esenciales</li>
+                            <li>20+ recursos digitales creados</li>
+                            <li>Implementación inmediata</li>
+                            <li>S/ 210 PEN por participante</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="pricing-item" style="border: 2px solid #8376FF;">
+                        <div class="price">S/ 8,400<span class="price-unit">PEN</span></div>
+                        <h4 style="color: #8376FF; margin-bottom: 1rem;">Modalidad B: Completo Dividido</h4>
+                        <ul style="color: rgba(255, 255, 255, 0.9);">
+                            <li>4 horas en 2 sesiones</li>
+                            <li>4 herramientas AI completas</li>
+                            <li>30+ recursos digitales creados</li>
+                            <li>Práctica entre sesiones</li>
+                            <li>S/ 280 PEN por participante</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem; padding: 2rem; background: rgba(255, 255, 255, 0.1); border-radius: 8px;">
+                    <h3 style="color: #47FFBF; margin-bottom: 1rem;">📊 Tabla Comparativa de Inversión</h3>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin: 1.5rem 0; text-align: left;">
+                        <div style="font-weight: 600; color: white; background: rgba(255,255,255,0.1); padding: 1rem; border-radius: 8px;">Aspecto</div>
+                        <div style="font-weight: 600; color: #47FFBF; background: rgba(71, 255, 191, 0.1); padding: 1rem; border-radius: 8px;">Modalidad A</div>
+                        <div style="font-weight: 600; color: #8376FF; background: rgba(131, 118, 255, 0.1); padding: 1rem; border-radius: 8px;">Modalidad B</div>
+                        
+                        <div style="color: rgba(255,255,255,0.8); padding: 0.5rem;">Duración</div>
+                        <div style="color: rgba(255,255,255,0.8); padding: 0.5rem;">2 horas</div>
+                        <div style="color: rgba(255,255,255,0.8); padding: 0.5rem;">4 horas (2x2h)</div>
+                        
+                        <div style="color: rgba(255,255,255,0.8); padding: 0.5rem;">Inversión Total</div>
+                        <div style="color: #47FFBF; font-weight: 600; padding: 0.5rem;">S/ 6,300 PEN</div>
+                        <div style="color: #8376FF; font-weight: 600; padding: 0.5rem;">S/ 8,400 PEN</div>
+                        
+                        <div style="color: rgba(255,255,255,0.8); padding: 0.5rem;">Por Participante</div>
+                        <div style="color: #47FFBF; font-weight: 600; padding: 0.5rem;">S/ 210 PEN</div>
+                        <div style="color: #8376FF; font-weight: 600; padding: 0.5rem;">S/ 280 PEN</div>
+                        
+                        <div style="color: rgba(255,255,255,0.8); padding: 0.5rem;">ROI Estimado</div>
+                        <div style="color: #47FFBF; font-weight: 600; padding: 0.5rem;">300% en 1 mes</div>
+                        <div style="color: #8376FF; font-weight: 600; padding: 0.5rem;">500% en 2 meses</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Comparison Table -->
+            <div class="section">
+                <h2>
+                    <div class="icon">📊</div>
+                    Tabla Comparativa Completa
+                </h2>
+                <div style="background: white; border-radius: 12px; padding: 2rem; border: 1px solid #e2e8f0; overflow-x: auto;">
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <thead>
+                            <tr style="background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);">
+                                <th style="padding: 1rem; text-align: left; border-bottom: 2px solid #e2e8f0; color: #2d3748; font-weight: 600;">Aspecto</th>
+                                <th style="padding: 1rem; text-align: center; border-bottom: 2px solid #e2e8f0; color: #47FFBF; font-weight: 600;">⚡ Modalidad A: Compacto</th>
+                                <th style="padding: 1rem; text-align: center; border-bottom: 2px solid #e2e8f0; color: #8376FF; font-weight: 600;">🚀 Modalidad B: Completo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="border-bottom: 1px solid #f0f4f8;">
+                                <td style="padding: 1rem; font-weight: 500; color: #4a5568;">Duración Total</td>
+                                <td style="padding: 1rem; text-align: center;">2 horas intensivas</td>
+                                <td style="padding: 1rem; text-align: center;">4 horas (2 sesiones de 2h)</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #f0f4f8;">
+                                <td style="padding: 1rem; font-weight: 500; color: #4a5568;">Módulos Incluidos</td>
+                                <td style="padding: 1rem; text-align: center;">3 módulos esenciales</td>
+                                <td style="padding: 1rem; text-align: center;">4 módulos completos</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #f0f4f8;">
+                                <td style="padding: 1rem; font-weight: 500; color: #4a5568;">Herramientas AI</td>
+                                <td style="padding: 1rem; text-align: center;">3 herramientas clave</td>
+                                <td style="padding: 1rem; text-align: center;">4 herramientas completas</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #f0f4f8;">
+                                <td style="padding: 1rem; font-weight: 500; color: #4a5568;">Recursos Creados</td>
+                                <td style="padding: 1rem; text-align: center;">20+ recursos digitales</td>
+                                <td style="padding: 1rem; text-align: center;">30+ recursos digitales</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #f0f4f8;">
+                                <td style="padding: 1rem; font-weight: 500; color: #4a5568;">Práctica Entre Sesiones</td>
+                                <td style="padding: 1rem; text-align: center;">No aplica</td>
+                                <td style="padding: 1rem; text-align: center;">✅ Sí (1 semana)</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #f0f4f8;">
+                                <td style="padding: 1rem; font-weight: 500; color: #4a5568;">Networking Total</td>
+                                <td style="padding: 1rem; text-align: center;">20 minutos</td>
+                                <td style="padding: 1rem; text-align: center;">35 minutos</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #f0f4f8;">
+                                <td style="padding: 1rem; font-weight: 500; color: #4a5568;">Follow-up</td>
+                                <td style="padding: 1rem; text-align: center;">Repositorio + WhatsApp</td>
+                                <td style="padding: 1rem; text-align: center;">Repositorio + Mentoring</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #f0f4f8;">
+                                <td style="padding: 1rem; font-weight: 500; color: #4a5568;">Inversión Total</td>
+                                <td style="padding: 1rem; text-align: center; font-weight: 600; color: #47FFBF;">S/ 6,300 PEN</td>
+                                <td style="padding: 1rem; text-align: center; font-weight: 600; color: #8376FF;">S/ 8,400 PEN</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #f0f4f8;">
+                                <td style="padding: 1rem; font-weight: 500; color: #4a5568;">Por Participante</td>
+                                <td style="padding: 1rem; text-align: center; font-weight: 600; color: #47FFBF;">S/ 210 PEN</td>
+                                <td style="padding: 1rem; text-align: center; font-weight: 600; color: #8376FF;">S/ 280 PEN</td>
+                            </tr>
+                            <tr style="background: linear-gradient(135deg, rgba(71, 255, 191, 0.1) 0%, rgba(131, 118, 255, 0.1) 100%);">
+                                <td style="padding: 1rem; font-weight: 600; color: #2d3748;">Ideal Para</td>
+                                <td style="padding: 1rem; text-align: center; font-weight: 500;">Adopción inmediata</td>
+                                <td style="padding: 1rem; text-align: center; font-weight: 500;">Transformación profunda</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div style="background: linear-gradient(135deg, #47FFBF 0%, #8376FF 50%, #FF48C7 100%); color: white; border-radius: 12px; padding: 2rem; margin: 2rem 0; text-align: center;">
+                    <h3 style="margin-bottom: 1rem;">🎯 Recomendación PUCP</h3>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 2rem 0;">
+                        <div style="background: rgba(255, 255, 255, 0.1); padding: 1.5rem; border-radius: 8px;">
+                            <h4 style="margin-bottom: 1rem;">Si Priorizan VELOCIDAD</h4>
+                            <p style="font-size: 0.9rem; margin-bottom: 1rem;">Modalidad A (Compacto)</p>
+                            <ul style="font-size: 0.85rem; text-align: left;">
+                                <li>Resultados inmediatos en 2 horas</li>
+                                <li>ROI visible en primera semana</li>
+                                <li>Perfecto para equipos que necesitan implementar YA</li>
+                            </ul>
+                        </div>
+                        <div style="background: rgba(255, 255, 255, 0.1); padding: 1.5rem; border-radius: 8px;">
+                            <h4 style="margin-bottom: 1rem;">Si Priorizan PROFUNDIDAD</h4>
+                            <p style="font-size: 0.9rem; margin-bottom: 1rem;">Modalidad B (Completo Dividido)</p>
+                            <ul style="font-size: 0.85rem; text-align: left;">
+                                <li>Dominio completo de herramientas</li>
+                                <li>Práctica supervisada entre sesiones</li>
+                                <li>Network más sólido de early adopters</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- What's Included -->
+            <div class="section">
+                <h2>
+                    <div class="icon">✅</div>
+                    Qué Incluye Cada Inversión
+                </h2>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                    <div style="background: linear-gradient(135deg, rgba(71, 255, 191, 0.1) 0%, rgba(131, 118, 255, 0.1) 100%); border: 2px solid #47FFBF; border-radius: 12px; padding: 2rem;">
+                        <h3 style="color: #47FFBF; margin-bottom: 1rem;">⚡ Modalidad A: S/ 6,300</h3>
+                        <ul>
+                            <li>2 horas de facilitación profesional intensiva</li>
+                            <li>3 herramientas AI esenciales dominadas</li>
+                            <li>20+ recursos digitales creados en vivo</li>
+                            <li>Repositorio completo de prompts (.md)</li>
+                            <li>Certificado de participación digital</li>
+                            <li>Acceso a WhatsApp group exclusivo PUCP AI</li>
+                            <li>Templates de implementación inmediata</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="background: linear-gradient(135deg, rgba(131, 118, 255, 0.1) 0%, rgba(255, 72, 199, 0.1) 100%); border: 2px solid #8376FF; border-radius: 12px; padding: 2rem;">
+                        <h3 style="color: #8376FF; margin-bottom: 1rem;">🚀 Modalidad B: S/ 8,400</h3>
+                        <ul>
+                            <li>4 horas de facilitación profesional (2 sesiones)</li>
+                            <li>4 herramientas AI completas dominadas</li>
+                            <li>30+ recursos digitales creados progresivamente</li>
+                            <li>Repositorio completo + recursos avanzados</li>
+                            <li>Certificado de participación digital avanzado</li>
+                            <li>1 semana de práctica guiada entre sesiones</li>
+                            <li>Sesiones de mentoring post-taller</li>
+                            <li>Network sólido de early adopters AI PUCP</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Success Guarantee -->
+            <div class="section">
+                <h2>
+                    <div class="icon">🎯</div>
+                    Garantías de Éxito por Modalidad
+                </h2>
+                <div class="highlight-box">
+                    <h3 style="color: #8376FF; margin-bottom: 1.5rem;">Framework Probado + Metodología Prisma = 90%+ Implementation Rate</h3>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 2rem 0;">
+                        <div style="background: linear-gradient(135deg, rgba(71, 255, 191, 0.1) 0%, rgba(131, 118, 255, 0.1) 100%); border: 2px solid #47FFBF; border-radius: 12px; padding: 2rem;">
+                            <h4 style="color: #47FFBF; margin-bottom: 1rem;">⚡ Modalidad A: Garantías</h4>
+                            <div class="stats-grid" style="grid-template-columns: 1fr 1fr;">
+                                <div class="stat-item">
+                                    <span class="stat-number">25+</span>
+                                    <span class="stat-label">Participantes Completan 3 Módulos</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-number">90%</span>
+                                    <span class="stat-label">Intención Uso Continuo</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-number">100%</span>
+                                    <span class="stat-label">Implementa 2+ Herramientas</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-number">20+</span>
+                                    <span class="stat-label">Recursos Digitales Creados</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="background: linear-gradient(135deg, rgba(131, 118, 255, 0.1) 0%, rgba(255, 72, 199, 0.1) 100%); border: 2px solid #8376FF; border-radius: 12px; padding: 2rem;">
+                            <h4 style="color: #8376FF; margin-bottom: 1rem;">🚀 Modalidad B: Garantías</h4>
+                            <div class="stats-grid" style="grid-template-columns: 1fr 1fr;">
+                                <div class="stat-item">
+                                    <span class="stat-number">25+</span>
+                                    <span class="stat-label">Participantes Completan Ambas Sesiones</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-number">95%</span>
+                                    <span class="stat-label">Intención Uso Continuo</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-number">100%</span>
+                                    <span class="stat-label">Implementa 3+ Herramientas</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-number">30+</span>
+                                    <span class="stat-label">Recursos Digitales Creados</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p style="margin-top: 2rem; font-style: italic; text-align: center; color: #718096; font-size: 1.1rem;">
+                        "Framework probado en transformación de innovation processes en sector financiero peruano"<br>
+                        <strong style="color: #8376FF;">Ambas modalidades respetan el límite de 2 horas máximo por sesión</strong>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div class="cta-section">
+                <h2 style="margin-bottom: 1rem;">¿Cuál Modalidad Prefiere PUCP?</h2>
+                <p style="font-size: 1.2rem; margin-bottom: 2rem;">
+                    Elija la modalidad que mejor se adapte a sus necesidades y cronograma
+                </p>
+                <div style="display: flex; gap: 1rem; justify-content: center; margin: 2rem 0;">
+                    <a href="mailto:huayaney.exe@gmail.com?subject=Aprobación%20Modalidad%20A%20-%20Workshop%20Compacto%20PUCP" class="cta-button" style="background: #47FFBF; color: #1a202c;">
+                        ⚡ Aprobar Modalidad A (S/ 6,300)
+                    </a>
+                    <a href="mailto:huayaney.exe@gmail.com?subject=Aprobación%20Modalidad%20B%20-%20Workshop%20Completo%20PUCP" class="cta-button" style="background: #8376FF; color: white;">
+                        🚀 Aprobar Modalidad B (S/ 8,400)
+                    </a>
+                </div>
+                <div style="text-align: center; margin: 1.5rem 0; padding: 1rem; background: rgba(255,255,255,0.1); border-radius: 8px;">
+                    <p style="font-size: 1rem; margin-bottom: 0.5rem;">💡 ¿Necesita ayuda para decidir?</p>
+                    <a href="mailto:huayaney.exe@gmail.com?subject=Consulta%20-%20Cuál%20Modalidad%20Elegir" style="color: #47FFBF; text-decoration: underline;">
+                        Coordinar reunión para discutir la mejor opción
+                    </a>
+                </div>
+                <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.8;">
+                    Ambas modalidades respetan el máximo de 2 horas por sesión - ROI inmediato garantizado
+                </p>
+            </div>
+
+            <!-- Signature -->
+            <div class="signature">
+                <div class="signature-name">Luis Eduardo Huayaney</div>
+                <div class="signature-title">Lead Product Manager - AI • Innovation Leader • Workshop Facilitator</div>
+                <div style="margin-top: 1rem; font-size: 0.9rem; color: #718096;">
+                    Interbank | Makers Fellow | Ex-Innovation Lead Mibanco
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Information -->
+        <div class="contact-info">
+            <div>
+                <h3>Próximos Pasos</h3>
+                <p>¿Podríamos coordinar una reunión para discutir aprobación, fechas y logística del taller?</p>
+            </div>
+            <div style="text-align: right;">
+                <p><strong>Email:</strong> huayaney.exe@gmail.com</p>
+                <p><strong>LinkedIn:</strong> linkedin.com/in/luishuayaney</p>
+                <p><strong>WhatsApp:</strong> +51 900 957 907</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

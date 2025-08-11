@@ -1,0 +1,1334 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luis Huayaney - AI Workshop Pricing Calculator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #2d3748;
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d3748 100%);
+            color: white;
+            padding: 3rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(71, 255, 191, 0.15) 0%, transparent 70%);
+        }
+
+        .profile-section {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .profile-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #47FFBF 0%, #8376FF 50%, #FF48C7 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+
+        .profile-info h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #47FFBF 0%, #8376FF 50%, #FF48C7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .profile-info p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 0.5rem;
+        }
+
+        .credentials {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1.5rem;
+        }
+
+        .credential-badge {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            padding: 3rem;
+        }
+
+        .calculator-section {
+            background: #f8fafc;
+            padding: 2.5rem;
+            border-radius: 16px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .results-section {
+            background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+            color: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            color: #1a202c;
+        }
+
+        .results-section .section-title {
+            color: white;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: #2d3748;
+            font-size: 1rem;
+        }
+
+        select, input[type="number"], input[type="range"] {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        select:focus, input[type="number"]:focus {
+            outline: none;
+            border-color: #8376FF;
+            box-shadow: 0 0 0 3px rgba(131, 118, 255, 0.1);
+        }
+
+        input[type="range"] {
+            padding: 0;
+            height: 8px;
+            background: #e2e8f0;
+            -webkit-appearance: none;
+            appearance: none;
+            cursor: pointer;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            background: #8376FF;
+            cursor: pointer;
+        }
+
+        input[type="range"]::-moz-range-thumb {
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            background: #8376FF;
+            cursor: pointer;
+            border: none;
+        }
+
+        .range-display {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 0.5rem;
+        }
+
+        .range-value {
+            background: #8376FF;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .pricing-display {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .price-main {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #47FFBF;
+            text-align: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .price-subtitle {
+            text-align: center;
+            opacity: 0.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .price-breakdown {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .breakdown-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .breakdown-value {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #47FFBF;
+        }
+
+        .breakdown-label {
+            font-size: 0.85rem;
+            opacity: 0.7;
+            margin-top: 0.25rem;
+        }
+
+        .value-props {
+            margin-top: 2rem;
+        }
+
+        .value-props h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: #47FFBF;
+        }
+
+        .value-props ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .value-props li {
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .value-props li::before {
+            content: "✓";
+            color: #47FFBF;
+            font-weight: bold;
+        }
+
+        .roi-calculator {
+            background: rgba(71, 255, 191, 0.1);
+            border: 1px solid rgba(71, 255, 191, 0.3);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-top: 2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .roi-calculator.collapsed {
+            padding: 1rem 2rem;
+        }
+        
+        .roi-calculator.collapsed .roi-content {
+            display: none;
+        }
+        
+        .roi-toggle {
+            background: none;
+            border: none;
+            color: #8376FF;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+        }
+        
+        .roi-toggle:hover {
+            color: #6B5CE8;
+        }
+
+        .roi-calculator h3 {
+            color: #1a202c;
+            margin-bottom: 1rem;
+        }
+
+        .roi-display {
+            background: rgba(71, 255, 191, 0.1);
+            border: 1px solid rgba(71, 255, 191, 0.3);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-top: 1.5rem;
+        }
+
+        .roi-item {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .roi-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #47FFBF;
+        }
+
+        .roi-label {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 0.25rem;
+        }
+
+        .positioning-selector {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .position-option {
+            background: white;
+            border: 2px solid #e2e8f0;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .position-option:hover {
+            border-color: #8376FF;
+        }
+
+        .position-option.active {
+            border-color: #8376FF;
+            background: rgba(131, 118, 255, 0.05);
+        }
+
+        .position-title {
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 0.5rem;
+        }
+
+        .position-range {
+            font-size: 0.9rem;
+            color: #718096;
+        }
+
+        .export-section {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .export-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #8376FF 0%, #FF48C7 100%);
+            color: white;
+            border: none;
+            padding: 0.875rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(131, 118, 255, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .disclaimer {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .manual-override {
+            background: rgba(255, 191, 71, 0.1);
+            border: 1px solid rgba(255, 191, 71, 0.3);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-top: 1rem;
+        }
+        
+        .override-toggle {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+        }
+        
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 24px;
+        }
+        
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        
+        input:checked + .slider {
+            background-color: #8376FF;
+        }
+        
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+        
+        .override-content {
+            display: none;
+        }
+        
+        .override-content.active {
+            display: block;
+        }
+
+        @media (max-width: 1024px) {
+            .main-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .price-breakdown {
+                grid-template-columns: 1fr;
+            }
+
+            .positioning-selector {
+                grid-template-columns: 1fr;
+            }
+
+            .export-buttons {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .profile-section {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .credentials {
+                justify-content: center;
+            }
+
+            .container {
+                border-radius: 0;
+                margin: 0;
+            }
+
+            .main-content {
+                padding: 2rem 1.5rem;
+            }
+
+            .calculator-section, .results-section {
+                padding: 1.5rem;
+            }
+
+            .roi-display {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="profile-section">
+                <div class="profile-avatar">LH</div>
+                <div class="profile-info">
+                    <h1>Luis Eduardo Huayaney</h1>
+                    <p>AI Workshop Pricing Calculator</p>
+                    <p style="font-size: 1rem;">Lead Product Manager - AI | Innovation Leader | Workshop Facilitator</p>
+                </div>
+            </div>
+            <div class="credentials">
+                <div class="credential-badge">🏆 Startup Peru 2025 Winner - Gen AI</div>
+                <div class="credential-badge">🏦 Lead Product Manager - Interbank</div>
+                <div class="credential-badge">🚀 Makers Fellow</div>
+                <div class="credential-badge">📈 Proven 3x ROI Results</div>
+                <div class="credential-badge">🎓 Universidad del Pacífico Instructor</div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="calculator-section">
+                <h2 class="section-title">Workshop Configuration</h2>
+
+                <div class="form-group">
+                    <label>Workshop Type</label>
+                    <select id="workshopType">
+                        <option value="half-day">Half-Day Workshop (3-4 hours)</option>
+                        <option value="full-day" selected>Full-Day Workshop (6-8 hours)</option>
+                        <option value="multi-day">Multi-Day Program (2-3 days)</option>
+                        <option value="intensive">Intensive Program (1 week)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Number of Participants</label>
+                    <input type="number" id="participants" value="30" min="5" max="100">
+                </div>
+
+                <div class="form-group">
+                    <label>Industry Sector</label>
+                    <select id="industry">
+                        <option value="financial" selected>Financial Services</option>
+                        <option value="technology">Technology</option>
+                        <option value="healthcare">Healthcare</option>
+                        <option value="education">Education</option>
+                        <option value="manufacturing">Manufacturing</option>
+                        <option value="retail">Retail</option>
+                        <option value="government">Government</option>
+                        <option value="nonprofit">Non-Profit</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Customization Level</label>
+                    <select id="customization">
+                        <option value="standard">Standard Workshop</option>
+                        <option value="customized" selected>Industry-Customized</option>
+                        <option value="bespoke">Fully Bespoke Program</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Market Positioning</label>
+                    <div class="positioning-selector">
+                        <div class="position-option" data-position="competitive">
+                            <div class="position-title">Competitive</div>
+                            <div class="position-range">S/ 200 - 350</div>
+                        </div>
+                        <div class="position-option active" data-position="premium">
+                            <div class="position-title">Premium</div>
+                            <div class="position-range">S/ 400 - 600</div>
+                        </div>
+                        <div class="position-option" data-position="luxury">
+                            <div class="position-title">Luxury</div>
+                            <div class="position-range">S/ 650 - 900</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Discount Percentage</label>
+                    <input type="range" id="discount" min="0" max="50" value="0">
+                    <div class="range-display">
+                        <span>0%</span>
+                        <div class="range-value" id="discountValue">0%</div>
+                        <span>50%</span>
+                    </div>
+                </div>
+
+                <div class="manual-override">
+                    <div class="override-toggle">
+                        <label class="switch">
+                            <input type="checkbox" id="manualOverride">
+                            <span class="slider"></span>
+                        </label>
+                        <label for="manualOverride" style="cursor: pointer; font-weight: 600;">Manual Rate Override</label>
+                    </div>
+                    <div class="override-content" id="overrideContent">
+                        <label>Custom Rate per Participant (S/)</label>
+                        <input type="number" id="manualRate" value="500" min="100" max="2000">
+                        <p style="font-size: 0.9rem; color: #718096; margin-top: 0.5rem;">Override automatic calculations with your custom rate</p>
+                    </div>
+                </div>
+
+                <div class="roi-calculator" id="roiCalculator">
+                    <button type="button" class="roi-toggle" id="roiToggle">
+                        <span>📊</span>
+                        <span>Client ROI Calculator</span>
+                        <span id="roiArrow">▼</span>
+                    </button>
+                    <div class="roi-content" id="roiContent">
+                        <div class="form-group" style="margin-bottom: 1rem; margin-top: 1.5rem;">
+                            <label>Average Employee Hourly Rate (S/)</label>
+                            <input type="number" id="employeeRate" value="80" min="30" max="300">
+                        </div>
+                        <div class="form-group" style="margin-bottom: 1rem;">
+                            <label>Expected Productivity Gain (%)</label>
+                            <input type="range" id="productivityGain" min="10" max="200" value="150">
+                            <div class="range-display">
+                                <span>10%</span>
+                                <div class="range-value" id="productivityValue">150%</div>
+                                <span>200%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="results-section">
+                <h2 class="section-title">Pricing Results</h2>
+
+                <div class="pricing-display">
+                    <div class="price-main" id="totalPrice">S/ 15,000</div>
+                    <div class="price-subtitle">Total Investment</div>
+                    <div class="price-breakdown">
+                        <div class="breakdown-item">
+                            <div class="breakdown-value" id="perPersonPrice">S/ 500</div>
+                            <div class="breakdown-label">Per Participant</div>
+                        </div>
+                        <div class="breakdown-item">
+                            <div class="breakdown-value" id="totalParticipants">30</div>
+                            <div class="breakdown-label">Participants</div>
+                        </div>
+                        <div class="breakdown-item">
+                            <div class="breakdown-value" id="discountAmount">S/ 0</div>
+                            <div class="breakdown-label">Discount</div>
+                        </div>
+                        <div class="breakdown-item">
+                            <div class="breakdown-value" id="finalPrice">S/ 15,000</div>
+                            <div class="breakdown-label">Final Price</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="value-props">
+                    <h3>Your Unique Value Proposition</h3>
+                    <ul id="valueList">
+                        <li>Startup Peru 2025 Winner in Generative AI</li>
+                        <li>Lead Product Manager at Interbank with AI expertise</li>
+                        <li>Proven 3x productivity improvements</li>
+                        <li>Hands-on experience in financial sector AI transformation</li>
+                        <li>University-level educational expertise</li>
+                        <li>Makers Fellow with startup ecosystem connections</li>
+                    </ul>
+                </div>
+
+                <div class="roi-display" id="roiResults" style="display: none;">
+                    <h3 style="color: white; margin-bottom: 1rem; font-size: 1.2rem;">📊 Client ROI Analysis</h3>
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem;">
+                        <div class="roi-item">
+                            <div class="roi-value" id="roiMonthly">S/ 36,000</div>
+                            <div class="roi-label">Monthly Productivity Gain</div>
+                        </div>
+                        <div class="roi-item">
+                            <div class="roi-value" id="roiAnnual">S/ 432,000</div>
+                            <div class="roi-label">Annual ROI</div>
+                        </div>
+                        <div class="roi-item">
+                            <div class="roi-value" id="paybackPeriod">1.2</div>
+                            <div class="roi-label">Payback Period (months)</div>
+                        </div>
+                        <div class="roi-item">
+                            <div class="roi-value" id="roiMultiplier">28.8x</div>
+                            <div class="roi-label">ROI Multiplier</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="export-section">
+                    <h3>Export & Share</h3>
+                    <div class="export-buttons">
+                        <button class="btn" onclick="generatePDFQuote()">📄 Generate PDF Quote</button>
+                        <button class="btn btn-secondary" onclick="copyToClipboard()">📋 Copy Pricing</button>
+                    </div>
+                </div>
+
+                <div class="disclaimer">
+                    <strong>Professional Pricing Calculator</strong><br>
+                    Based on market research, your credentials as Startup Peru Winner, Lead Product Manager at Interbank, and proven track record of 3x productivity improvements. Pricing reflects premium positioning justified by government recognition, corporate leadership experience, and documented ROI results.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Pricing configuration based on research
+        const pricingConfig = {
+            workshopTypes: {
+                'half-day': { multiplier: 0.6, name: 'Half-Day Workshop' },
+                'full-day': { multiplier: 1.0, name: 'Full-Day Workshop' },
+                'multi-day': { multiplier: 2.2, name: 'Multi-Day Program' },
+                'intensive': { multiplier: 4.5, name: 'Intensive Program' }
+            },
+            industries: {
+                'financial': { multiplier: 1.2, name: 'Financial Services' },
+                'technology': { multiplier: 1.1, name: 'Technology' },
+                'healthcare': { multiplier: 1.15, name: 'Healthcare' },
+                'education': { multiplier: 0.8, name: 'Education' },
+                'manufacturing': { multiplier: 1.0, name: 'Manufacturing' },
+                'retail': { multiplier: 0.9, name: 'Retail' },
+                'government': { multiplier: 0.85, name: 'Government' },
+                'nonprofit': { multiplier: 0.7, name: 'Non-Profit' }
+            },
+            customization: {
+                'standard': { multiplier: 1.0, name: 'Standard Workshop' },
+                'customized': { multiplier: 1.3, name: 'Industry-Customized' },
+                'bespoke': { multiplier: 1.8, name: 'Fully Bespoke Program' }
+            },
+            positioning: {
+                'competitive': { baseRate: 275, name: 'Competitive' },
+                'premium': { baseRate: 500, name: 'Premium' },
+                'luxury': { baseRate: 750, name: 'Luxury' }
+            }
+        };
+
+        let currentPositioning = 'premium';
+
+        let manualOverrideActive = false;
+        let roiCalculatorVisible = true;
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            setupEventListeners();
+            updatePricing();
+            initializeROICalculator();
+        });
+
+        function setupEventListeners() {
+            // Form inputs
+            document.getElementById('workshopType').addEventListener('change', updatePricing);
+            document.getElementById('participants').addEventListener('input', updatePricing);
+            document.getElementById('industry').addEventListener('change', updatePricing);
+            document.getElementById('customization').addEventListener('change', updatePricing);
+            document.getElementById('discount').addEventListener('input', updateDiscount);
+            document.getElementById('employeeRate').addEventListener('input', updateROI);
+            document.getElementById('productivityGain').addEventListener('input', updateProductivityDisplay);
+            
+            // Manual override
+            document.getElementById('manualOverride').addEventListener('change', toggleManualOverride);
+            document.getElementById('manualRate').addEventListener('input', updatePricing);
+            
+            // ROI Calculator toggle
+            document.getElementById('roiToggle').addEventListener('click', toggleROICalculator);
+
+            // Positioning selector
+            document.querySelectorAll('.position-option').forEach(option => {
+                option.addEventListener('click', function() {
+                    document.querySelectorAll('.position-option').forEach(opt => opt.classList.remove('active'));
+                    this.classList.add('active');
+                    currentPositioning = this.dataset.position;
+                    updatePricing();
+                });
+            });
+        }
+
+        function updateDiscount() {
+            const discount = document.getElementById('discount').value;
+            document.getElementById('discountValue').textContent = discount + '%';
+            updatePricing();
+        }
+
+        function updateProductivityDisplay() {
+            const gain = document.getElementById('productivityGain').value;
+            document.getElementById('productivityValue').textContent = gain + '%';
+            updateROI();
+        }
+
+        function updatePricing() {
+            const workshopType = document.getElementById('workshopType').value;
+            const participants = parseInt(document.getElementById('participants').value) || 30;
+            const industry = document.getElementById('industry').value;
+            const customization = document.getElementById('customization').value;
+            const discount = parseFloat(document.getElementById('discount').value) || 0;
+
+            let pricePerPerson;
+            
+            if (manualOverrideActive) {
+                // Use manual rate
+                pricePerPerson = parseInt(document.getElementById('manualRate').value) || 500;
+            } else {
+                // Calculate base price per participant
+                let basePrice = pricingConfig.positioning[currentPositioning].baseRate;
+                
+                // Apply multipliers
+                basePrice *= pricingConfig.workshopTypes[workshopType].multiplier;
+                basePrice *= pricingConfig.industries[industry].multiplier;
+                basePrice *= pricingConfig.customization[customization].multiplier;
+
+                // Group size scaling (economies of scale for larger groups)
+                let groupMultiplier = 1;
+                if (participants >= 50) groupMultiplier = 0.85;
+                else if (participants >= 30) groupMultiplier = 0.9;
+                else if (participants >= 20) groupMultiplier = 0.95;
+                else if (participants <= 10) groupMultiplier = 1.15;
+
+                pricePerPerson = Math.round(basePrice * groupMultiplier);
+            }
+            
+            const subtotal = pricePerPerson * participants;
+            const discountAmount = Math.round(subtotal * (discount / 100));
+            const finalPrice = subtotal - discountAmount;
+
+            // Update display
+            document.getElementById('totalPrice').textContent = `S/ ${finalPrice.toLocaleString()}`;
+            document.getElementById('perPersonPrice').textContent = `S/ ${pricePerPerson.toLocaleString()}`;
+            document.getElementById('totalParticipants').textContent = participants.toString();
+            document.getElementById('discountAmount').textContent = `S/ ${discountAmount.toLocaleString()}`;
+            document.getElementById('finalPrice').textContent = `S/ ${finalPrice.toLocaleString()}`;
+
+            // Always update ROI if calculator is visible
+            if (roiCalculatorVisible) {
+                updateROI();
+            }
+        }
+
+        function updateROI() {
+            const participants = parseInt(document.getElementById('participants').value) || 30;
+            const employeeRate = parseFloat(document.getElementById('employeeRate').value) || 80;
+            const productivityGain = parseFloat(document.getElementById('productivityGain').value) || 150;
+            const finalPrice = parseFloat(document.getElementById('finalPrice').textContent.replace(/[^0-9]/g, '')) || 15000;
+
+            // Calculate ROI (assuming 160 hours per month per employee)
+            const hoursPerMonth = 160;
+            
+            // Correct interpretation: 150% gain means 150% additional productivity
+            // So if someone normally produces X, with 150% gain they produce X + (1.5 * X) = 2.5X total
+            const productivityGainDecimal = productivityGain / 100;
+            const additionalHoursPerEmployee = hoursPerMonth * productivityGainDecimal;
+            const monthlyGainPerEmployee = additionalHoursPerEmployee * employeeRate;
+            const totalMonthlyGain = monthlyGainPerEmployee * participants;
+            const annualGain = totalMonthlyGain * 12;
+            const paybackMonths = totalMonthlyGain > 0 ? finalPrice / totalMonthlyGain : 0;
+            const roiMultiplier = finalPrice > 0 ? annualGain / finalPrice : 0;
+
+            // Update ROI display with safety checks
+            document.getElementById('roiMonthly').textContent = `S/ ${Math.round(totalMonthlyGain).toLocaleString()}`;
+            document.getElementById('roiAnnual').textContent = `S/ ${Math.round(annualGain).toLocaleString()}`;
+            document.getElementById('paybackPeriod').textContent = paybackMonths > 0 ? paybackMonths.toFixed(1) : 'N/A';
+            document.getElementById('roiMultiplier').textContent = roiMultiplier > 0 ? roiMultiplier.toFixed(1) + 'x' : 'N/A';
+        }
+
+        function toggleManualOverride() {
+            manualOverrideActive = document.getElementById('manualOverride').checked;
+            const overrideContent = document.getElementById('overrideContent');
+            
+            if (manualOverrideActive) {
+                overrideContent.classList.add('active');
+            } else {
+                overrideContent.classList.remove('active');
+            }
+            
+            updatePricing();
+        }
+        
+        function initializeROICalculator() {
+            // Start with ROI calculator collapsed
+            toggleROICalculator();
+        }
+        
+        function toggleROICalculator() {
+            roiCalculatorVisible = !roiCalculatorVisible;
+            const calculator = document.getElementById('roiCalculator');
+            const arrow = document.getElementById('roiArrow');
+            const roiResults = document.getElementById('roiResults');
+            
+            if (roiCalculatorVisible) {
+                calculator.classList.remove('collapsed');
+                arrow.textContent = '▼';
+                roiResults.style.display = 'block';
+                updateROI();
+            } else {
+                calculator.classList.add('collapsed');
+                arrow.textContent = '▶';
+                roiResults.style.display = 'none';
+            }
+        }
+        
+        function generatePDFQuote() {
+            const workshopType = pricingConfig.workshopTypes[document.getElementById('workshopType').value].name;
+            const participants = document.getElementById('participants').value;
+            const industry = pricingConfig.industries[document.getElementById('industry').value].name;
+            const customization = pricingConfig.customization[document.getElementById('customization').value].name;
+            const finalPrice = document.getElementById('finalPrice').textContent;
+            const perPersonPrice = document.getElementById('perPersonPrice').textContent;
+            const discount = document.getElementById('discountValue').textContent;
+            const date = new Date().toLocaleDateString('es-PE');
+            
+            // ROI data if calculator is active
+            const includeROI = roiCalculatorVisible;
+            let roiData = null;
+            if (includeROI) {
+                roiData = {
+                    monthlyGain: document.getElementById('roiMonthly').textContent,
+                    annualROI: document.getElementById('roiAnnual').textContent,
+                    paybackPeriod: document.getElementById('paybackPeriod').textContent,
+                    roiMultiplier: document.getElementById('roiMultiplier').textContent,
+                    employeeRate: document.getElementById('employeeRate').value,
+                    productivityGain: document.getElementById('productivityValue').textContent
+                };
+            }
+            
+            // Create optimized PDF content
+            const pdfContent = `<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>AI Workshop Quote - Luis Eduardo Huayaney</title>
+    <style>
+        @page { 
+            margin: 15mm; 
+            size: A4; 
+        }
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.4;
+            color: #2d3748;
+            font-size: 11px;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .prisma-logo {
+            width: 50px;
+            height: 50px;
+            flex-shrink: 0;
+        }
+        
+        .header-info h1 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #1a202c;
+            margin-bottom: 3px;
+        }
+        
+        .header-info .subtitle {
+            font-size: 12px;
+            color: #8376FF;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+        
+        .header-info .role {
+            font-size: 10px;
+            color: #718096;
+        }
+        
+        .quote-number {
+            margin-left: auto;
+            text-align: right;
+            font-size: 10px;
+            color: #718096;
+        }
+        
+        .content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .section {
+            margin-bottom: 18px;
+        }
+        
+        .section-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #1a202c;
+            margin-bottom: 10px;
+            border-left: 3px solid #8376FF;
+            padding-left: 8px;
+        }
+        
+        .details-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+        
+        .detail-item {
+            background: #f8fafc;
+            padding: 10px;
+            border-radius: 6px;
+            border-left: 2px solid #47FFBF;
+        }
+        
+        .detail-label {
+            font-size: 9px;
+            color: #718096;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 3px;
+        }
+        
+        .detail-value {
+            font-size: 11px;
+            font-weight: 600;
+            color: #1a202c;
+        }
+        
+        .pricing-highlight {
+            background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .pricing-highlight h2 {
+            font-size: 12px;
+            opacity: 0.9;
+            margin-bottom: 8px;
+        }
+        
+        .total-price {
+            font-size: 28px;
+            font-weight: 700;
+            color: #47FFBF;
+            margin: 8px 0;
+        }
+        
+        .price-subtitle {
+            font-size: 10px;
+            opacity: 0.8;
+        }
+        
+        .credentials {
+            background: rgba(131, 118, 255, 0.05);
+            padding: 12px;
+            border-radius: 6px;
+            border: 1px solid rgba(131, 118, 255, 0.1);
+        }
+        
+        .credentials-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px;
+            list-style: none;
+        }
+        
+        .credentials-list li {
+            font-size: 10px;
+            color: #4a5568;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .credentials-list li::before {
+            content: "●";
+            color: #8376FF;
+            font-weight: bold;
+        }
+        
+        .footer {
+            margin-top: auto;
+            padding-top: 15px;
+            border-top: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 9px;
+            color: #718096;
+        }
+        
+        .contact-info {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 3px;
+        }
+        
+        .generated-date {
+            font-style: italic;
+        }
+        
+        @media print {
+            body { 
+                -webkit-print-color-adjust: exact;
+                color-adjust: exact;
+            }
+            .pricing-highlight { 
+                background: #2d3748 !important; 
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo-section">
+            <svg class="prisma-logo" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M263.538 500H35.4263C8.18116 500 -8.82481 470.529 4.79777 446.934L118.854 249.451L232.82 51.8793C246.443 28.2847 280.455 28.2847 294.077 51.8793L408.133 249.362L522.189 446.845C535.811 470.44 518.805 499.911 491.56 499.911H263.449L263.538 500Z" fill="url(#prisma-gradient)"/>
+                <path d="M445.517 250.103C476.056 229.981 526.184 224.906 611.57 219.386C526.273 213.866 476.056 208.791 445.517 188.668C456.557 164.539 479.885 136.582 515.677 95.8923C474.988 131.596 446.941 155.012 422.901 166.053C402.779 135.514 397.704 85.386 392.184 0C386.663 85.2969 381.588 135.514 361.466 166.053C337.337 155.012 309.38 131.685 268.69 95.8923C304.394 136.582 327.81 164.628 338.851 188.668C308.311 208.791 258.184 213.866 172.798 219.386C258.095 224.906 308.311 229.981 338.851 250.103C327.81 274.232 304.483 302.19 268.69 342.879C309.38 307.176 337.426 283.759 361.466 272.719C381.588 303.258 386.663 353.386 392.184 438.772C397.704 353.475 402.779 303.258 422.901 272.719C447.03 283.759 474.988 307.087 515.677 342.879C479.974 302.19 456.557 274.143 445.517 250.103Z" fill="white"/>
+                <defs>
+                    <linearGradient id="prisma-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="12%" stop-color="#47FFBF"/>
+                        <stop offset="34%" stop-color="#2870FF"/>
+                        <stop offset="61%" stop-color="#FF4895"/>
+                    </linearGradient>
+                </defs>
+            </svg>
+            <div class="header-info">
+                <h1>Luis Eduardo Huayaney</h1>
+                <div class="subtitle">AI Workshop Quote</div>
+                <div class="role">Lead Product Manager - AI | Innovation Leader</div>
+            </div>
+        </div>
+        <div class="quote-number">
+            <div><strong>Quote #${Date.now().toString().slice(-6)}</strong></div>
+            <div>${date}</div>
+        </div>
+    </div>
+    
+    <div class="content">
+        <div class="section">
+            <div class="section-title">Workshop Configuration</div>
+            <div class="details-grid">
+                <div class="detail-item">
+                    <div class="detail-label">Workshop Type</div>
+                    <div class="detail-value">${workshopType}</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">Industry Focus</div>
+                    <div class="detail-value">${industry}</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">Customization</div>
+                    <div class="detail-value">${customization}</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">Participants</div>
+                    <div class="detail-value">${participants} profesionales</div>
+                </div>
+            </div>
+            ${discount !== '0%' ? `<div style="text-align: center; margin: 12px 0; padding: 8px; background: rgba(255, 191, 71, 0.1); border-radius: 4px; color: #8376FF; font-weight: 600; font-size: 10px;">Discount Applied: ${discount}</div>` : ''}
+        </div>
+        
+        <div class="pricing-highlight">
+            <h2>Total Investment</h2>
+            <div class="total-price">${finalPrice}</div>
+            <div class="price-subtitle">Professional AI Workshop Training • ${perPersonPrice} per participant</div>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">Facilitator Credentials</div>
+            <div class="credentials">
+                <ul class="credentials-list">
+                    <li>Startup Peru 2025 Winner - Gen AI</li>
+                    <li>Lead Product Manager - Interbank</li>
+                    <li>Proven 3x productivity improvements</li>
+                    <li>University educational expertise</li>
+                    <li>Makers Fellow - Startup ecosystem</li>
+                    <li>Financial sector AI transformation</li>
+                </ul>
+            </div>
+        </div>
+        
+        ${includeROI ? `
+        <div class="section">
+            <div class="section-title">ROI Analysis</div>
+            <div class="credentials">
+                <div class="details-grid">
+                    <div class="detail-item">
+                        <div class="detail-label">Monthly Productivity Gain</div>
+                        <div class="detail-value">${roiData.monthlyGain}</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Annual ROI</div>
+                        <div class="detail-value">${roiData.annualROI}</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Payback Period</div>
+                        <div class="detail-value">${roiData.paybackPeriod} months</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">ROI Multiplier</div>
+                        <div class="detail-value">${roiData.roiMultiplier}</div>
+                    </div>
+                </div>
+                <div style="text-align: center; margin-top: 12px; padding: 8px; background: rgba(71, 255, 191, 0.1); border-radius: 4px; font-size: 10px; color: #1a202c;">
+                    <strong>Assumptions:</strong> ${roiData.employeeRate} S/hour rate • ${roiData.productivityGain} productivity improvement
+                </div>
+            </div>
+        </div>` : ''}
+    </div>
+    
+    <div class="footer">
+        <div class="contact-info">
+            <div class="contact-item">
+                <span>📧</span>
+                <span>huayaney.exe@gmail.com</span>
+            </div>
+            <div class="contact-item">
+                <span>📱</span>
+                <span>+51 900 957 907</span>
+            </div>
+            <div class="contact-item">
+                <span>💼</span>
+                <span>linkedin.com/in/luishuayaney</span>
+            </div>
+        </div>
+        <div class="generated-date">
+            Generated by Luis Huayaney Pricing Calculator
+        </div>
+    </div>
+</body>
+</html>`;
+
+            // Create blob and download
+            try {
+                const blob = new Blob([pdfContent], { type: 'text/html' });
+                const url = URL.createObjectURL(blob);
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = `AI_Workshop_Quote_${participants}pax_${date.replace(/\//g, '-')}.html`;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                URL.revokeObjectURL(url);
+                
+                // Also open in new tab for immediate printing
+                const printWindow = window.open('', '_blank');
+                printWindow.document.write(pdfContent);
+                printWindow.document.close();
+                setTimeout(() => {
+                    printWindow.print();
+                }, 100);
+            } catch (error) {
+                console.error('PDF generation failed:', error);
+                alert('Error generating PDF. Please try again.');
+            }
+        }
+
+        function copyToClipboard() {
+            const finalPrice = document.getElementById('finalPrice').textContent;
+            const perPersonPrice = document.getElementById('perPersonPrice').textContent;
+            const participants = document.getElementById('participants').value;
+            
+            const text = `AI Workshop Pricing: ${finalPrice} total (${perPersonPrice} per participant, ${participants} participants) - Luis Eduardo Huayaney, Startup Peru Winner & Interbank Lead Product Manager`;
+            
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Pricing copied to clipboard!');
+            }).catch(() => {
+                alert('Failed to copy to clipboard');
+            });
+        }
+    </script>
+</body>
+</html>

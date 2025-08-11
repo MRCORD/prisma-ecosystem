@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml" style="font-size:16px;">
+<head>
+ <meta charset="utf-8" />
+ <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+ <meta name="viewport" content="width=device-width,initial-scale=1" />
+ <title>Flash Coffee Meetup</title>
+ <style>
+  body { margin:0; padding:0; background-color:#fff; font-family:sans-serif; }
+  .container { max-width:440px; margin:0 auto; background:#fff; padding:0 16px; }
+  .header { text-align:center; margin-top:32px; }
+  .main-title { color:#17d8ca; font-size:36px; font-weight:700; margin-top:8px; margin-bottom:8px; line-height:1.1; }
+  .subtitle { color:#444; font-size:16px; margin-bottom:16px; letter-spacing:1px;}
+  .img-center { display:block; margin:0 auto 18px auto; max-width:220px; }
+  .button { display:inline-block; background-color:#17d8ca; color:#fff; font-size:20px; padding:12px 32px; border-radius:22px; font-weight:bold; letter-spacing:2px; margin:16px 0; text-decoration:none; align:center}
+  .greeting { color:#223; font-size:20px; font-weight:600; margin-top:0; text-align:center; width:100%; }
+  .meeting-box { background:#e6f9f7; border-radius:9px; padding:16px; margin:18px 0; text-align:center; }
+  .address { color:#fff; background:#17d8ca; border-radius:7px; font-weight:bold; margin:10px 0 0 0; padding:10px 0;}
+  .desc { font-size:15px; color:#555; margin:10px 0; text-align:center; width:100%;}
+  .logo { display:block; margin:32px auto 12px auto; max-width:90px; }
+  .footer-note { font-size:13px; color:#555; text-align:center; margin-bottom:12px;}
+  .unsub { font-size:13px; text-align:center; margin-bottom:32px;}
+  .unsub a { color:#12ceb6; text-decoration:underline !important; border:0 !important; }
+ </style>
+</head>
+<body>
+  <div class="container">
+
+    <div class="header">
+      <div class="main-title">
+        FLASH<br>COFFEE<br>MEETUP
+      </div>
+      <div class="subtitle">
+        08/08 &nbsp;&bull;&nbsp; cold-brews &nbsp;&bull;&nbsp; product &nbsp;&bull;&nbsp; AI
+      </div>
+    </div>
+
+    <!-- Greeting now comes before the image -->
+    <p class="greeting">Hola {{var:firstname}},</p>
+
+    <!-- Main event image -->
+    <img src="https://s817g.mjt.lu/img2/s817g/55cf2f50-e392-4124-bb89-50a6bb398632/content" alt="Cold brew speakers illustration" class="img-center" width="220" height="auto" />
+
+    <div style="text-align:center;">
+      <span class="button">¡ESTÁS DENTRO!</span>
+    </div>
+
+    <div class="meeting-box">
+      <p>Nos vemos en el flash meetup de producto y AI.<br>
+      <strong>Viernes 8 de agosto – 6:30 p.m.</strong></p>
+      <div class="address">
+        Milimetrica Cafe<br>
+        Calle Alcanfores 215, Miraflores
+      </div>
+    </div>
+
+    <div class="desc">
+      Conversaciones reales entre builders y buena música.
+      Son sólo 20 cupos limitados, en caso de no poder asistir, por favor déjanos saber en respuesta a este correo.
+    </div>
+
+    <!-- PRISMA Logo, now rectangular and no text below -->
+    <img src="https://s817g.mjt.lu/img2/s817g/4bd4a779-a36a-4e1a-8553-0a1abbbb2989/content" alt="PRISMA" class="logo" width="90" height="auto" />
+
+    <div class="footer-note">
+      Comparte esta vibra #FlashCoffeeMeetup
+    </div>
+
+    <div class="unsub">
+      <a href="[[UNSUB_LINK_EN]]">Cancelar suscripción</a>
+    </div>
+  </div>
+</body>
+</html>
