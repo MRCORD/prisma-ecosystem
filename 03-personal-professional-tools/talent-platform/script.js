@@ -72,11 +72,19 @@ document.addEventListener('DOMContentLoaded', function() {
         // Send to Airtable
         sendToTeam(data)
             .then((result) => {
-                // Send confirmation email simulation
+                // Send confirmation email simulation with hiring details
                 const email = data.contact_email;
                 const name = data.contact_name;
                 const isHiring = data.intent === 'hiring';
-                sendConfirmationEmail(email, name, isHiring);
+                const hiringDetails = isHiring ? {
+                    role_title: data.role_title,
+                    role_type: data.role_type,
+                    level: data.level,
+                    work_mode: data.work_mode,
+                    urgency: data.urgency
+                } : null;
+                
+                sendConfirmationEmail(email, name, isHiring, hiringDetails);
                 
                 showSuccess();
                 form.reset();
@@ -139,9 +147,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     [getFieldId('Company')]: formData.company_name,
                     [getFieldId('Email')]: formData.contact_email,
                     [getFieldId('Phone')]: formData.contact_phone,
-                    [getFieldId('Intent')]: getIntentSelectId(formData.intent),
-                    [getFieldId('Status')]: getStatusSelectId('New'),
-                    [getFieldId('Source')]: getSourceSelectId('Website Form')
+                    [getFieldId('Intent')]: formData.intent === 'hiring' ? 'Hiring' : 'Conversation',
+                    [getFieldId('Status')]: 'New',
+                    [getFieldId('Source')]: 'Website Form'
                 }
             };
 
@@ -155,15 +163,13 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 }
 
-                // Add hiring fields to record (stored in a JSON string or separate fields)
-                airtableRecord.fields['Role Details'] = JSON.stringify({
-                    title: formData.role_title,
-                    type: formData.role_type,
-                    level: formData.level,
-                    workMode: formData.work_mode,
-                    urgency: formData.urgency
-                });
+                // For now, we'll skip storing hiring details since the field doesn't exist
+                // The hiring details are captured but not sent to Airtable until the field is created
+                // You can create a "Role Details" field in Airtable to store this information
             }
+
+            // Debug: Log what we're sending to Airtable
+            console.log('Sending to Airtable:', JSON.stringify(airtableRecord, null, 2));
 
             const response = await fetch(AIRTABLE_API_URL, {
                 method: 'POST',
@@ -206,36 +212,6 @@ document.addEventListener('DOMContentLoaded', function() {
         return fieldIds[fieldName];
     }
 
-    // Helper function to get status select IDs
-    function getStatusSelectId(status) {
-        const statusIds = {
-            'New': 'sel5tVXs22wLZRMtJ',
-            'Contacted': 'seleGBRVydQ226YRy',
-            'Qualified': 'sel9IdpAosOjAfSwJ',
-            'In Progress': 'selpweOaMjswdXHFl',
-            'Closed': 'selfYV6BgUg6G28hH'
-        };
-        return statusIds[status];
-    }
-
-    // Helper function to get intent select IDs
-    function getIntentSelectId(intent) {
-        const intentIds = {
-            'hiring': 'selBJaQ4Pvj5uUeLe',
-            'conversation': 'selke357vNXGYm2MC'
-        };
-        return intentIds[intent];
-    }
-
-    // Helper function to get source select IDs
-    function getSourceSelectId(source) {
-        const sourceIds = {
-            'Website Form': 'sel1JvMutnI84M7Dr',
-            'Referral': 'seltaCnUaUdqGOgKL',
-            'Event': 'selvv1fxaNyKfkUc7'
-        };
-        return sourceIds[source];
-    }
 
 
     function showSuccess() {
@@ -316,7 +292,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 10000);
     }
 
-    function sendConfirmationEmail(email, name, isHiring) {
+    function sendConfirmationEmail(email, name, isHiring, hiringDetails = null) {
         // Phase 1: Simulate confirmation email
         const greeting = name ? `¡Hola ${name.split(' ')[0]}!` : '¡Hola!';
         
@@ -340,8 +316,20 @@ Te contactaremos en las próximas 24 horas para una llamada de scoping de 15 min
 - Sourcing en nuestra comunidad de +2500 profesionales
 - Shortlist con evidencia en ≤10 días laborales
 
-Mientras tanto, ya estamos identificando candidatos potenciales en nuestra comunidad.
+Mientras tanto, ya estamos identificando candidatos potenciales en nuestra comunidad.`;
+
+            // Add hiring details if available
+            if (hiringDetails) {
+                confirmationContent += `
+
+DETALLES DE LA POSICIÓN RECIBIDOS:
+- Rol: ${hiringDetails.role_title}
+- Tipo: ${hiringDetails.role_type}
+- Nivel: ${hiringDetails.level}
+- Modalidad: ${hiringDetails.work_mode}
+- Urgencia: ${hiringDetails.urgency}
 `;
+            }
         } else {
             confirmationContent += `
 Te contactaremos en las próximas 24 horas para una conversación de 15 minutos donde:
