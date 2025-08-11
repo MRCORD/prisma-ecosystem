@@ -140,7 +140,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     [getFieldId('Email')]: formData.contact_email,
                     [getFieldId('Phone')]: formData.contact_phone,
                     [getFieldId('Intent')]: getIntentSelectId(formData.intent),
-                    [getFieldId('Submission Date')]: new Date().toISOString(),
                     [getFieldId('Status')]: getStatusSelectId('New'),
                     [getFieldId('Source')]: getSourceSelectId('Website Form')
                 }
