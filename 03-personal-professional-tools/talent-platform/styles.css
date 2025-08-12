@@ -45,6 +45,88 @@
   box-sizing: border-box;
 }
 
+/* Form Feedback Messages */
+.success-message, .error-message {
+  background: var(--color-white);
+  border: 2px solid;
+  border-radius: 12px;
+  padding: var(--space-lg);
+  margin: var(--space-lg) 0;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.3s var(--ease-out);
+}
+
+.success-message.show, .error-message.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.success-message {
+  border-color: var(--color-cyan);
+  background: linear-gradient(135deg, rgba(71, 255, 191, 0.05) 0%, rgba(71, 255, 191, 0.02) 100%);
+}
+
+.error-message {
+  border-color: var(--color-pink);
+  background: linear-gradient(135deg, rgba(255, 72, 199, 0.05) 0%, rgba(255, 72, 199, 0.02) 100%);
+}
+
+.success-message h3 {
+  color: var(--color-purple);
+  font-weight: 600;
+  margin-bottom: var(--space-sm);
+}
+
+.error-message h3 {
+  color: var(--color-pink);
+  font-weight: 600;
+  margin-bottom: var(--space-sm);
+}
+
+.success-message p, .error-message p {
+  line-height: 1.6;
+  margin-bottom: var(--space-sm);
+}
+
+.success-message .metrics-display {
+  background: var(--color-cyan);
+  color: var(--color-black);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: 500;
+  font-size: 0.875rem;
+}
+
+/* Field Error Messages */
+.field-error {
+  color: var(--color-pink);
+  font-size: 0.75rem;
+  margin-top: 4px;
+  display: block;
+  font-weight: 500;
+}
+
+/* Enhanced Form Input Styling */
+.form-input:invalid, .form-select:invalid {
+  border-color: var(--color-pink);
+}
+
+.form-input:valid, .form-select:valid {
+  border-color: var(--color-gray-300);
+}
+
+.form-input:focus:valid, .form-select:focus:valid {
+  border-color: var(--color-purple);
+  box-shadow: 0 0 0 3px rgba(131, 118, 255, 0.1);
+}
+
+.form-input:focus:invalid, .form-select:focus:invalid {
+  border-color: var(--color-pink);
+  box-shadow: 0 0 0 3px rgba(255, 72, 199, 0.1);
+}
+
 body {
   font-family: var(--font-primary);
   font-weight: 400;
